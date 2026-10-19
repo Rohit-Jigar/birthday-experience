@@ -13,10 +13,12 @@ import { SectionSoundtrack } from "@/components/SectionSoundtrack";
 import { SectionWishes } from "@/components/SectionWishes";
 import { SectionStars } from "@/components/SectionStars";
 import { SectionFinal } from "@/components/SectionFinal";
+import { useAudio } from "@/context/audio-context";
 
 export default function BirthdayPage() {
   const [activeSection, setActiveSection] = useState(1);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const { pause } = useAudio();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,7 +27,12 @@ export default function BirthdayPage() {
           if (entry.isIntersecting) {
             const index = sectionRefs.current.indexOf(entry.target as HTMLElement);
             if (index !== -1) {
-              setActiveSection(index + 1);
+              const currentSection = index + 1;
+              setActiveSection(currentSection);
+              if (currentSection === 9) {
+                // When she reaches the final celebration section, automatically stop music
+                pause();
+              }
             }
           }
         });
@@ -38,7 +45,7 @@ export default function BirthdayPage() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [pause]);
 
   const scrollToSection = (sectionIndex: number) => {
     const target = sectionRefs.current[sectionIndex - 1];
