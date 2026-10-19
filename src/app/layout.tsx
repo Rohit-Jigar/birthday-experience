@@ -1,38 +1,37 @@
 import type { Metadata, Viewport } from "next";
+import { AudioProvider } from "@/context/audio-context";
+import { birthdayConfig } from "@/config/birthday";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Happy Birthday | A Little World For You",
-  description: "A cinematic, romantic digital birthday experience crafted with sincere care.",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  title: `Happy Birthday, ${birthdayConfig.recipientName}`,
+  description: birthdayConfig.subtitle,
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#160D22",
+  themeColor: "#050507",
   viewportFit: "cover",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-[#160D22] text-[#FFF5EE] overflow-x-hidden min-h-[100dvh] min-h-screen">
-        {children}
+      <body className="bg-background text-textPrimary antialiased selection:bg-champagne-300/30 selection:text-champagne-100 min-h-screen overflow-x-hidden">
+        <AudioProvider>{children}</AudioProvider>
       </body>
     </html>
   );

@@ -1,126 +1,157 @@
-export interface PhotoMemory {
+export interface MemoryItem {
   id: string;
-  src: string;
+  title: string;
+  date: string;
   caption: string;
-  date?: string;
-  location?: string;
+  image: string;
+}
+
+export interface PlaylistItem {
+  id: string;
+  title: string;
+  artist: string;
+  src: string;
+  cover: string;
+  duration: string;
 }
 
 export interface BirthdayConfig {
   recipientName: string;
-  birthdayDate: string; // e.g. "November 7"
-  birthdayYear?: number;
-  passcode: string; // "0712"
-  
-  // Cinematic Intro copy
-  openingTitle: string;
-  openingSubtitle: string;
-  openingInvitation: string;
-
-  // Personal Quote
-  personalQuote: {
-    hindi: string;
-    english: string;
+  subtitle: string;
+  openingText: {
+    line1: string;
+    line2: string;
+    line3: string;
+    buttonText: string;
   };
-
-  // Photographs
-  photos: PhotoMemory[];
-
-  // Letter & Wishes
+  mainPhoto: string;
+  cakeMessage: string;
   letter: {
-    salutation: string;
+    title: string;
+    greeting: string;
     paragraphs: string[];
-    favoriteMemoryTitle: string;
-    favoriteMemoryText: string;
-    birthdayWishTitle: string;
-    birthdayWishText: string;
     closing: string;
-    signOff: string;
+    sender: string;
   };
-
-  // Final Scene
-  finalMessage: string;
-  finalSubtext: string;
-
-  // Audio settings
-  audio: {
-    defaultMuted: boolean;
-    songTitle?: string;
-    songArtist?: string;
-    youtubeId?: string;
-    youtubeUrl?: string;
-    embedUrl?: string;
-    customAudioPath?: string;
+  memories: MemoryItem[];
+  playlist: PlaylistItem[];
+  wishes: string[];
+  finalWishQuote: string;
+  interactiveStars: {
+    title: string;
+    instruction: string;
+    starCount: number;
+    completedTitle: string;
+    hiddenMessage: string;
+  };
+  finalSurprise: {
+    waitLine1: string;
+    waitLine2: string;
+    headline: string;
+    subline: string;
+    replayButton: string;
   };
 }
 
-export const BIRTHDAY_CONFIG: BirthdayConfig = {
-  recipientName: "You",
-  birthdayDate: "November 7",
-  birthdayYear: 2026,
-  passcode: "0712",
-
-  openingTitle: "A little world, made just for you.",
-  openingSubtitle: "Some people leave beautiful memories wherever they go.",
-  openingInvitation: "Tap to begin the journey",
-
-  personalQuote: {
-    hindi: "कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।",
-    english: "Some bonds never truly end; only words quietly fall silent.",
+export const birthdayConfig: BirthdayConfig = {
+  recipientName: "Nurul Fauziah",
+  subtitle: "INI SPECIAL SEKALI ANJAY",
+  openingText: {
+    line1: "Hey...",
+    line2: "I made something for you.",
+    line3: "So take your time.",
+    buttonText: "Continue ↓",
   },
-
-  photos: [
+  mainPhoto: "/images/birthday-photo.jpg",
+  cakeMessage: "Make a wish ✦",
+  letter: {
+    title: "Surat Kecil dari Aku",
+    greeting: "Dearest Nurul Fauziah,",
+    paragraphs: [
+      "Halo jia, Happy Birthday, Selamat buat kamu yaa udhh bisa ngelewatin sampai detik ini, keren sihh kamu sebenarnya",
+      "Semoga panjang umur, Sehat selalu, Dan yang paling penting, selalu bahagia ya. Jangan lupa buat apresiasi diri kamu sendiri atas semua usaha dan perjuangan hebat yang udah kamu lalui selama ini.",
+      "Semoga di usia yang baru ini, semua impian dan cita-citamu bisa terwujud satu per satu. Ingat ya, kamu nggak sendirian kok selalu ada orang-orang yang bangga dan sayang sama kamu. Nikmati harimu!",
+    ],
+    closing: "With endless warmth,",
+    sender: "Always yours ♡",
+  },
+  memories: [
     {
-      id: "photo-1",
-      src: "/images/photo-1.jpg",
-      caption: "A radiant glimpse of happiness, holding light in every gentle glance.",
-      date: "A timeless memory",
-      location: "Captured in time",
+      id: "1",
+      title: "Si Paling 2 Jari",
+      date: "Mei 2",
+      caption: "A random little memory that still makes me smile.",
+      image: "/images/memory-1.jpg",
     },
     {
-      id: "photo-2",
-      src: "/images/photo-2.jpg",
-      caption: "Grace and serenity — an effortless beauty that remains unforgettable.",
-      date: "Treasured chapter",
-      location: "In our thoughts",
+      id: "2",
+      title: "Kulineran Yang Sangat Sehat",
+      date: "Agustus 3",
+      caption: "Good food, warm conversations, and simple moments.",
+      image: "/images/memory-2.jpg",
     },
     {
-      id: "photo-3",
-      src: "/images/photo-3.jpg",
-      caption: "Some memories don't fade; they stay softly etched in the heart forever.",
-      date: "Special moment",
-      location: "Always cherished",
+      id: "3",
+      title: "Memories on Roblox",
+      date: "May 3",
+      caption: "Late night hangouts and endless laughs in our virtual world.",
+      image: "/images/memory-3.jpg",
+    },
+    {
+      id: "4",
+      title: "Memories on Roblox",
+      date: "May 3",
+      caption: "No matter the distance, we always find our way back to this place.",
+      image: "/images/memory-4.jpg",
     },
   ],
-
-  letter: {
-    salutation: "Happy Birthday,",
-    paragraphs: [
-      "I wanted to make something a little different for your special day. Some people become an indelible part of our story, and the memories they leave behind continue to mean something profound.",
-      "“कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।”",
-      "I hope this new year of your life brings you deep peace, boundless happiness, wonderful opportunities, and countless reasons to smile from your heart.",
-      "No expectations, no pressure, and nothing left unsaid — just a sincere wish that life treats you kindly, wherever your path may lead.",
-    ],
-    favoriteMemoryTitle: "A Gentle Reflection",
-    favoriteMemoryText:
-      "The quiet moments of genuine laughter, unspoken understanding, and shared tranquility that time will always preserve with dignity.",
-    birthdayWishTitle: "My Birthday Wish for You",
-    birthdayWishText:
-      "May you always walk through life surrounded by genuine warmth, protected by peace, and granted every dream your kind heart secretly holds.",
-    closing: "Happy Birthday.",
-    signOff: "Take care of yourself, always.",
+  playlist: [
+    {
+      id: "s1",
+      title: "Some",
+      artist: "Soyu & Junggigo",
+      src: "/music/song1.mp3",
+      cover: "/covers/song1.jpg",
+      duration: "3:29",
+    },
+    {
+      id: "s2",
+      title: "Magnetic",
+      artist: "ILLIT",
+      src: "/music/song2.mp3",
+      cover: "/covers/song2.jpg",
+      duration: "2:57",
+    },
+    {
+      id: "s3",
+      title: "ONLY ",
+      artist: "Lee Hi",
+      src: "/music/song3.mp3",
+      cover: "/covers/song3.jpg",
+      duration: "2:50",
+    },
+  ],
+  wishes: [
+    "Semoga hari-harimu diwarnai lebih banyak senyuman.",
+    "Semoga semua hal yang kamu impikan bisa terwujud satu per satu.",
+    "Semoga tahun ini berjalan lebih ramah dan penuh kebaikan buat kamu.",
+    "Semoga kamu selalu menemukan ketenangan di setiap momen heningmu.",
+    "Semoga kamu selalu dikelilingi oleh cinta dan kehangatan.",
+  ],
+  finalWishQuote: "And I hope you always know how special you are.",
+  interactiveStars: {
+    title: "Find the stars ✦",
+    instruction: "Tap on all glowing stars floating around to reveal a secret",
+    starCount: 5,
+    completedTitle: "You found them all ♡",
+    hiddenMessage:
+      "No matter how vast the universe is, your brightness always lights up the room. Keep shining bright!",
   },
-
-  finalMessage: "May your day be as luminous as the kindness you carry.",
-  finalSubtext: "Celebrate today — you deserve every ounce of beauty this world has to offer.",
-
-  audio: {
-    defaultMuted: false,
-    songTitle: "The Last Letter",
-    songArtist: "Maan Panu",
-    youtubeId: "kz0kbFmB7FU",
-    youtubeUrl: "https://www.youtube.com/watch?v=kz0kbFmB7FU",
-    embedUrl: "https://www.youtube-nocookie.com/embed/kz0kbFmB7FU?autoplay=1&enablejsapi=1",
-    customAudioPath: "/audio/the-last-letter.m4a",
+  finalSurprise: {
+    waitLine1: "Wait...",
+    waitLine2: "There's one more thing.",
+    headline: "Happy Birthday, Alya",
+    subline: "I hope you have the happiest, most magical year ahead.",
+    replayButton: "Replay ↻",
   },
 };
