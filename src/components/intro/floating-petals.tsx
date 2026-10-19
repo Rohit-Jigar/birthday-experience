@@ -14,7 +14,7 @@ interface Petal {
   opacity: number;
 }
 
-export function FloatingPetals({ count = 20 }: { count?: number }) {
+export function FloatingPetals({ count = 10 }: { count?: number }) {
   const prefersReducedMotion = useReducedMotion();
 
   const petals = useMemo<Petal[]>(() => {

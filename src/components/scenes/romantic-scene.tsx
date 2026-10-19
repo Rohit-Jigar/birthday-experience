@@ -39,35 +39,41 @@ export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
 
   return (
     <div className="relative w-full min-h-screen flex flex-col items-center justify-between overflow-hidden bg-radial from-[#251025] via-[#160D22] to-[#0A050E] select-none">
-      {/* 3D WebGL Canvas Layer */}
+      {/* 3D WebGL Canvas Layer - Optimized for 60 FPS Mobile */}
       <div className="absolute inset-0 z-0 pointer-events-auto">
         <Canvas
           camera={{ position: [0, 0, 5], fov: 45 }}
-          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+          dpr={[1, 1.5]}
+          performance={{ min: 0.5 }}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+          }}
         >
           <ambientLight intensity={0.7} />
-          <directionalLight position={[5, 5, 5]} intensity={1.2} color="#FFF5EE" />
-          <pointLight position={[-4, 3, 2]} intensity={1.8} color="#E8A5B8" />
-          <pointLight position={[3, -3, 3]} intensity={1.4} color="#F2D7B0" />
+          <directionalLight position={[4, 4, 4]} intensity={1.1} color="#FFF5EE" />
+          <pointLight position={[-3, 2, 2]} intensity={1.5} color="#E8A5B8" />
+          <pointLight position={[3, -2, 2]} intensity={1.2} color="#F2D7B0" />
 
           <Suspense fallback={null}>
-            {/* Starfield background */}
+            {/* Optimized Starfield background */}
             <Stars
-              radius={80}
-              depth={40}
-              count={1200}
-              factor={3}
+              radius={70}
+              depth={35}
+              count={450}
+              factor={2.5}
               saturation={0.5}
               fade
-              speed={1.2}
+              speed={0.9}
             />
 
             {/* Floating 3D Glass Heart */}
             <Float
-              speed={2}
-              rotationIntensity={0.6}
-              floatIntensity={0.8}
-              floatingRange={[-0.15, 0.15]}
+              speed={1.8}
+              rotationIntensity={0.5}
+              floatIntensity={0.6}
+              floatingRange={[-0.12, 0.12]}
             >
               <ThreeHeart />
             </Float>
@@ -80,7 +86,7 @@ export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full glass-pill text-xs text-rose-200 border border-rose-300/20 shadow-md mb-3"
         >
           <Sparkles size={12} className="text-[#F2D7B0]" />
@@ -90,7 +96,7 @@ export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
         <motion.h2
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
           className="text-3xl sm:text-5xl font-serif font-light text-white tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
         >
           A Realm of Peace
@@ -102,7 +108,7 @@ export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="glass-panel rounded-3xl p-6 sm:p-7 border border-rose-300/25 shadow-2xl rose-glow text-center space-y-4"
         >
           {/* Sincere Quote in Hindi & English */}

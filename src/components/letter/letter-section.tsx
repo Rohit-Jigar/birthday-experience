@@ -139,6 +139,31 @@ export function LetterSection({
                 </p>
               </div>
 
+              {/* Soundtrack Tag: Maan Panu - The Last Letter */}
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-[#F4E9EE] border border-[#E0CBD5] flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#6F2947] text-white flex items-center justify-center">
+                    <Heart size={14} className="fill-white" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] uppercase tracking-wider text-[#6F2947] font-semibold block">
+                      Soundtrack of this Letter
+                    </span>
+                    <span className="text-xs text-[#381B27] font-medium">
+                      Maan Panu — The Last Letter
+                    </span>
+                  </div>
+                </div>
+                <a
+                  href="https://www.youtube.com/watch?v=kz0kbFmB7FU"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-medium text-[#6F2947] hover:underline flex items-center gap-1"
+                >
+                  Listen on YouTube &rarr;
+                </a>
+              </div>
+
               {/* Sign-off */}
               <div className="pt-2 border-t border-[#E8D5C8] flex flex-col items-end">
                 <span className="font-serif italic text-base text-[#4A1D2F]">

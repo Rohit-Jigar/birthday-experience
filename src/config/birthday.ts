@@ -45,6 +45,11 @@ export interface BirthdayConfig {
   // Audio settings
   audio: {
     defaultMuted: boolean;
+    songTitle?: string;
+    songArtist?: string;
+    youtubeId?: string;
+    youtubeUrl?: string;
+    embedUrl?: string;
     customAudioPath?: string;
   };
 }
@@ -111,6 +116,11 @@ export const BIRTHDAY_CONFIG: BirthdayConfig = {
 
   audio: {
     defaultMuted: true,
-    customAudioPath: "/audio/ambient.mp3",
+    songTitle: "The Last Letter",
+    songArtist: "Maan Panu",
+    youtubeId: "kz0kbFmB7FU",
+    youtubeUrl: "https://www.youtube.com/watch?v=kz0kbFmB7FU",
+    embedUrl: "https://www.youtube-nocookie.com/embed/kz0kbFmB7FU?autoplay=1&enablejsapi=1",
+    customAudioPath: "/audio/the-last-letter.mp3",
   },
 };

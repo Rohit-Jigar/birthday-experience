@@ -1,18 +1,16 @@
 # dependencies
-/node_modules
-/.pnp
+node_modules/
+.pnp
 .pnp.js
 .yarn/install-state.gz
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
-
-# production
-/build
+.next/
+out/
+build/
 
 # misc
 .DS_Store
@@ -28,7 +26,7 @@ yarn-error.log*
 .env
 
 # vercel
-.vercel
+.vercel/
 
 # typescript
 *.tsbuildinfo
