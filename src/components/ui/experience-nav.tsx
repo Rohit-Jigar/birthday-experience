@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 interface ExperienceNavProps {
   currentStep: ExperienceStep;
   onStepChange: (step: ExperienceStep) => void;
+  isPlaying: boolean;
   isMuted: boolean;
   onToggleMute: () => void;
   isUnlocked: boolean;
@@ -26,6 +27,7 @@ const STEPS_LIST: { id: ExperienceStep; label: string }[] = [
 export function ExperienceNav({
   currentStep,
   onStepChange,
+  isPlaying,
   isMuted,
   onToggleMute,
   isUnlocked,
@@ -115,7 +117,7 @@ export function ExperienceNav({
 
       {/* Right: Audio and Next controls */}
       <div className="flex items-center gap-2 pointer-events-auto">
-        <AudioPlayer isMuted={isMuted} onToggleMute={onToggleMute} />
+        <AudioPlayer isPlaying={isPlaying} isMuted={isMuted} onToggleMute={onToggleMute} />
 
         {currentIndex < STEPS_LIST.length - 1 && (isUnlocked || currentStep === "intro") && (
           <button

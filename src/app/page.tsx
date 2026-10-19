@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ExperienceStep } from "@/types";
 import { ExperienceNav } from "@/components/ui/experience-nav";
@@ -16,18 +16,59 @@ import { BIRTHDAY_CONFIG } from "@/config/birthday";
 export default function BirthdayPage() {
   const [currentStep, setCurrentStep] = useState<ExperienceStep>("intro");
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [isMuted, setIsMuted] = useState(BIRTHDAY_CONFIG.audio.defaultMuted);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const soundFx = useSoundFx(isMuted);
 
+  // Sync mute state with audio element
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  // When birthday girl enters password 0712 -> Automatically starts music!
   const handleUnlockSuccess = () => {
     setIsUnlocked(true);
     soundFx.playUnlock();
+
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => {
+          console.log("Audio playback:", err);
+        });
+    }
+
     // Transition into 3D romantic universe
     setTimeout(() => {
       setCurrentStep("universe");
     }, 400);
   };
+
+  // Automated audio orchestration:
+  // Starts on unlock -> continues through universe, gallery, letter -> STOPS on finale!
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (currentStep === "finale" || currentStep === "intro" || currentStep === "lockscreen") {
+      // Reached the last page or returned to lockscreen/intro -> STOP music immediately!
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else if (isUnlocked) {
+      // In universe, gallery, or letter -> ensure music is playing!
+      if (audioRef.current.paused) {
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => {});
+      }
+    }
+  }, [currentStep, isUnlocked]);
 
   const handleStepChange = (step: ExperienceStep) => {
     soundFx.playChime();
@@ -36,10 +77,21 @@ export default function BirthdayPage() {
 
   return (
     <main className="relative w-full min-h-screen bg-[#160D22] text-[#FFF5EE] overflow-x-hidden">
-      {/* Global Navigation Header with Step Tracker and Audio Controls */}
+      {/* Root Background Audio Element */}
+      <audio
+        ref={audioRef}
+        src={BIRTHDAY_CONFIG.audio.customAudioPath || "/audio/the-last-letter.m4a"}
+        preload="auto"
+        loop
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      />
+
+      {/* Global Navigation Header with Step Tracker and Audio Status Indicator */}
       <ExperienceNav
         currentStep={currentStep}
         onStepChange={handleStepChange}
+        isPlaying={isPlaying}
         isMuted={isMuted}
         onToggleMute={() => setIsMuted((prev) => !prev)}
         isUnlocked={isUnlocked}
@@ -150,6 +202,7 @@ export default function BirthdayPage() {
             <FinalScene
               onReplay={() => {
                 soundFx.playChime();
+                setIsUnlocked(false);
                 setCurrentStep("intro");
               }}
               onGoToGallery={() => {
