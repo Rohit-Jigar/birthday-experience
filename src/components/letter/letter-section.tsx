@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, Sparkles, Heart, ArrowRight } from "lucide-react";
+import { Mail, Sparkles, Heart, ArrowRight, Play, Pause, ExternalLink } from "lucide-react";
 import { CandleInteractive } from "./candle-interactive";
 import { BIRTHDAY_CONFIG } from "@/config/birthday";
 import { Button } from "@/components/ui/button";
@@ -19,10 +19,22 @@ export function LetterSection({
   onPlayChime,
 }: LetterSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSongPlaying, setIsSongPlaying] = useState(false);
+  const letterAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleOpenLetter = () => {
     if (onPlayChime) onPlayChime();
     setIsOpen(true);
+  };
+
+  const toggleLetterSong = () => {
+    if (!letterAudioRef.current) return;
+    if (isSongPlaying) {
+      letterAudioRef.current.pause();
+      setIsSongPlaying(false);
+    } else {
+      letterAudioRef.current.play().then(() => setIsSongPlaying(true)).catch(() => {});
+    }
   };
 
   return (
@@ -140,28 +152,48 @@ export function LetterSection({
               </div>
 
               {/* Soundtrack Tag: Maan Panu - The Last Letter */}
-              <div className="p-3.5 sm:p-4 rounded-2xl bg-[#F4E9EE] border border-[#E0CBD5] flex items-center justify-between">
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-[#F4E9EE] border border-[#E0CBD5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <audio
+                  ref={letterAudioRef}
+                  src={BIRTHDAY_CONFIG.audio.customAudioPath || "/audio/the-last-letter.m4a"}
+                  preload="auto"
+                  loop
+                  onPlay={() => setIsSongPlaying(true)}
+                  onPause={() => setIsSongPlaying(false)}
+                />
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#6F2947] text-white flex items-center justify-center">
-                    <Heart size={14} className="fill-white" />
+                  <div className="w-9 h-9 rounded-full bg-[#6F2947] text-white flex items-center justify-center shrink-0">
+                    <Heart size={15} className="fill-white" />
                   </div>
                   <div>
-                    <span className="text-[11px] uppercase tracking-wider text-[#6F2947] font-semibold block">
+                    <span className="text-[10px] uppercase tracking-wider text-[#6F2947] font-semibold block">
                       Soundtrack of this Letter
                     </span>
-                    <span className="text-xs text-[#381B27] font-medium">
+                    <span className="text-xs sm:text-sm text-[#381B27] font-medium block">
                       Maan Panu — The Last Letter
                     </span>
                   </div>
                 </div>
-                <a
-                  href="https://www.youtube.com/watch?v=kz0kbFmB7FU"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-medium text-[#6F2947] hover:underline flex items-center gap-1"
-                >
-                  Listen on YouTube &rarr;
-                </a>
+
+                <div className="flex items-center gap-2 self-end sm:self-auto">
+                  <button
+                    onClick={toggleLetterSong}
+                    className="px-3.5 py-1.5 rounded-full bg-[#6F2947] hover:bg-[#8B3459] text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-sm cursor-pointer"
+                  >
+                    {isSongPlaying ? <Pause size={12} /> : <Play size={12} className="ml-0.5" />}
+                    <span>{isSongPlaying ? "Pause Song" : "Play Song"}</span>
+                  </button>
+
+                  <a
+                    href="https://www.youtube.com/watch?v=kz0kbFmB7FU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 text-[#6F2947] hover:text-[#381B27] transition-colors"
+                    title="Open on YouTube"
+                  >
+                    <ExternalLink size={14} />
+                  </a>
+                </div>
               </div>
 
               {/* Sign-off */}

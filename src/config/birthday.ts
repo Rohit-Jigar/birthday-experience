@@ -115,12 +115,12 @@ export const BIRTHDAY_CONFIG: BirthdayConfig = {
   finalSubtext: "Celebrate today — you deserve every ounce of beauty this world has to offer.",
 
   audio: {
-    defaultMuted: true,
+    defaultMuted: false,
     songTitle: "The Last Letter",
     songArtist: "Maan Panu",
     youtubeId: "kz0kbFmB7FU",
     youtubeUrl: "https://www.youtube.com/watch?v=kz0kbFmB7FU",
     embedUrl: "https://www.youtube-nocookie.com/embed/kz0kbFmB7FU?autoplay=1&enablejsapi=1",
-    customAudioPath: "/audio/the-last-letter.mp3",
+    customAudioPath: "/audio/the-last-letter.m4a",
   },
 };
