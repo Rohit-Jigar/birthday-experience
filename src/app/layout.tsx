@@ -12,9 +12,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: "#160D22",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -32,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-[#160D22] text-[#FFF5EE] overflow-x-hidden min-h-screen">
+      <body className="antialiased bg-[#160D22] text-[#FFF5EE] overflow-x-hidden min-h-[100dvh] min-h-screen">
         {children}
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Float, Stars } from "@react-three/drei";
 import { motion } from "motion/react";
@@ -9,31 +9,16 @@ import { ThreeHeart } from "./three-heart";
 import { SceneFallback } from "./scene-fallback";
 import { BIRTHDAY_CONFIG } from "@/config/birthday";
 import { Button } from "@/components/ui/button";
+import { useRenderingMode } from "@/hooks/use-rendering-mode";
 
 interface RomanticSceneProps {
   onExploreGallery: () => void;
 }
 
 export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
-  const [hasWebGL, setHasWebGL] = useState(true);
+  const { mode, triggerContextLoss } = useRenderingMode();
 
-  // WebGL availability check
-  useEffect(() => {
-    try {
-      const canvas = document.createElement("canvas");
-      const gl =
-        canvas.getContext("webgl") ||
-        canvas.getContext("experimental-webgl") ||
-        canvas.getContext("webgl2");
-      if (!gl) {
-        setHasWebGL(false);
-      }
-    } catch {
-      setHasWebGL(false);
-    }
-  }, []);
-
-  if (!hasWebGL) {
+  if (mode !== "enhanced-3d") {
     return <SceneFallback onExploreGallery={onExploreGallery} />;
   }
 
@@ -49,6 +34,12 @@ export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
             antialias: true,
             alpha: true,
             powerPreference: "high-performance",
+          }}
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener("webglcontextlost", (e) => {
+              e.preventDefault();
+              triggerContextLoss();
+            });
           }}
         >
           <ambientLight intensity={0.7} />

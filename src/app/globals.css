@@ -22,12 +22,29 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: 100svh;
     background-color: var(--bg-midnight);
     color: var(--text-ivory);
     font-family: var(--font-sans);
     overflow-x: hidden;
     touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Safe Area Padding Utilities */
+  .safe-area-top {
+    padding-top: max(env(safe-area-inset-top, 0px), 16px);
+  }
+  .safe-area-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 16px);
+  }
+  .safe-area-x {
+    padding-left: max(env(safe-area-inset-left, 0px), 16px);
+    padding-right: max(env(safe-area-inset-right, 0px), 16px);
   }
 }
 
