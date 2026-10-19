@@ -1,0 +1,132 @@
+"use client";
+
+import React, { Suspense, useState, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Float, Stars } from "@react-three/drei";
+import { motion } from "motion/react";
+import { Sparkles, ArrowRight } from "lucide-react";
+import { ThreeHeart } from "./three-heart";
+import { SceneFallback } from "./scene-fallback";
+import { BIRTHDAY_CONFIG } from "@/config/birthday";
+import { Button } from "@/components/ui/button";
+
+interface RomanticSceneProps {
+  onExploreGallery: () => void;
+}
+
+export function RomanticScene({ onExploreGallery }: RomanticSceneProps) {
+  const [hasWebGL, setHasWebGL] = useState(true);
+
+  // WebGL availability check
+  useEffect(() => {
+    try {
+      const canvas = document.createElement("canvas");
+      const gl =
+        canvas.getContext("webgl") ||
+        canvas.getContext("experimental-webgl") ||
+        canvas.getContext("webgl2");
+      if (!gl) {
+        setHasWebGL(false);
+      }
+    } catch {
+      setHasWebGL(false);
+    }
+  }, []);
+
+  if (!hasWebGL) {
+    return <SceneFallback onExploreGallery={onExploreGallery} />;
+  }
+
+  return (
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-between overflow-hidden bg-radial from-[#251025] via-[#160D22] to-[#0A050E] select-none">
+      {/* 3D WebGL Canvas Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-auto">
+        <Canvas
+          camera={{ position: [0, 0, 5], fov: 45 }}
+          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        >
+          <ambientLight intensity={0.7} />
+          <directionalLight position={[5, 5, 5]} intensity={1.2} color="#FFF5EE" />
+          <pointLight position={[-4, 3, 2]} intensity={1.8} color="#E8A5B8" />
+          <pointLight position={[3, -3, 3]} intensity={1.4} color="#F2D7B0" />
+
+          <Suspense fallback={null}>
+            {/* Starfield background */}
+            <Stars
+              radius={80}
+              depth={40}
+              count={1200}
+              factor={3}
+              saturation={0.5}
+              fade
+              speed={1.2}
+            />
+
+            {/* Floating 3D Glass Heart */}
+            <Float
+              speed={2}
+              rotationIntensity={0.6}
+              floatIntensity={0.8}
+              floatingRange={[-0.15, 0.15]}
+            >
+              <ThreeHeart />
+            </Float>
+          </Suspense>
+        </Canvas>
+      </div>
+
+      {/* Top Heading Overlay */}
+      <div className="relative z-10 pt-20 sm:pt-24 px-6 text-center max-w-xl mx-auto pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full glass-pill text-xs text-rose-200 border border-rose-300/20 shadow-md mb-3"
+        >
+          <Sparkles size={12} className="text-[#F2D7B0]" />
+          <span>Chapter I &bull; The Sanctuary</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="text-3xl sm:text-5xl font-serif font-light text-white tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
+        >
+          A Realm of Peace
+        </motion.h2>
+      </div>
+
+      {/* Bottom Floating Glass Card & CTA */}
+      <div className="relative z-10 pb-12 sm:pb-16 px-4 w-full max-w-lg mx-auto pointer-events-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="glass-panel rounded-3xl p-6 sm:p-7 border border-rose-300/25 shadow-2xl rose-glow text-center space-y-4"
+        >
+          {/* Sincere Quote in Hindi & English */}
+          <p className="text-base sm:text-lg font-medium text-white/95 leading-relaxed tracking-wide">
+            {BIRTHDAY_CONFIG.personalQuote.hindi}
+          </p>
+
+          <p className="text-xs sm:text-sm text-rose-200/70 font-light italic">
+            "{BIRTHDAY_CONFIG.personalQuote.english}"
+          </p>
+
+          <div className="pt-2">
+            <Button
+              onClick={onExploreGallery}
+              variant="champagne"
+              size="lg"
+              className="w-full sm:w-auto px-8 py-3 text-sm font-semibold rounded-full shadow-xl hover:scale-[1.02] active:scale-95 transition-transform"
+            >
+              <span>Explore Memories &amp; Moments</span>
+              <ArrowRight size={15} className="ml-2" />
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}

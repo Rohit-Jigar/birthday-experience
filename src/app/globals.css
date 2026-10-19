@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-midnight: #160D22;
+    --bg-deep-rose: #351426;
+    --accent-burgundy: #6F2947;
+    --accent-soft-rose: #E8A5B8;
+    --accent-champagne: #F2D7B0;
+    --text-ivory: #FFF5EE;
+    
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--bg-midnight);
+    color: var(--text-ivory);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+}
+
+/* Glassmorphism primitives */
+.glass-panel {
+  background: rgba(35, 18, 45, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(232, 165, 184, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-pill {
+  background: rgba(255, 245, 238, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 245, 238, 0.15);
+}
+
+.glass-button {
+  background: rgba(232, 165, 184, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 165, 184, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button:hover {
+  background: rgba(232, 165, 184, 0.22);
+  border-color: rgba(242, 215, 176, 0.4);
+  box-shadow: 0 0 20px rgba(232, 165, 184, 0.3);
+}
+
+/* Ambient glow & light sweeps */
+.rose-glow {
+  box-shadow: 0 0 40px -10px rgba(232, 165, 184, 0.35);
+}
+
+.champagne-glow {
+  box-shadow: 0 0 35px -8px rgba(242, 215, 176, 0.3);
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 70%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  animation: shineSweep 8s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: rotate(30deg) translateY(-120%);
+  }
+  20%, 100% {
+    transform: rotate(30deg) translateY(120%);
+  }
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 16px rgba(232, 165, 184, 0.5);
+}
+
+.text-gold-glow {
+  text-shadow: 0 0 18px rgba(242, 215, 176, 0.6);
+}
+
+/* Custom delicate scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #160D22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 165, 184, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 165, 184, 0.5);
+}
