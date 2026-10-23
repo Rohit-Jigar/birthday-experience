@@ -1,7 +1,30 @@
 import type { Metadata, Viewport } from "next";
+import { Cinzel, Inter, Playfair_Display } from "next/font/google";
 import { AudioProvider } from "@/context/audio-context";
 import { birthdayConfig } from "@/config/birthday";
 import "./globals.css";
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  variable: "--font-cinzel",
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: `Happy Birthday, ${birthdayConfig.recipientName}`,
@@ -21,15 +44,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`dark scroll-smooth ${inter.variable} ${cinzel.variable} ${playfair.variable}`}
+    >
       <body className="bg-background text-textPrimary antialiased selection:bg-champagne-300/30 selection:text-champagne-100 min-h-screen overflow-x-hidden">
         <AudioProvider>{children}</AudioProvider>
       </body>

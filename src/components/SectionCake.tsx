@@ -73,11 +73,11 @@ export function SectionCake() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.85, filter: "blur(10px)" }}
-        whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: 40, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true }}
         transition={{ type: "spring", stiffness: 90, damping: 18 }}
-        className="relative flex flex-col items-center justify-center my-6 select-none"
+        className="relative flex flex-col items-center justify-center my-6 select-none will-change-transform"
       >
         {/* Candles */}
         <div className="flex items-center space-x-9 sm:space-x-14 mb-2 z-20">
@@ -92,8 +92,8 @@ export function SectionCake() {
                     <motion.div
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: [1, 1.15, 1], opacity: 1 }}
-                      exit={{ scale: 0, opacity: 0, filter: "blur(8px)" }}
-                      transition={{ duration: 0.35 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
                       className="relative flex flex-col items-center"
                     >
                       <span className="absolute w-7 h-9 rounded-full bg-rosePink-300/40 blur-md animate-pulse" />

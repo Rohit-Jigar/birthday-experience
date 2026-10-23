@@ -34,11 +34,11 @@ export function SectionLetter() {
           {isOpen ? (
             <motion.div
               key="letter"
-              initial={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(8px)" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full p-8 sm:p-10 rounded-3xl glass-panel border border-white/15 shadow-2xl text-left relative overflow-hidden"
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="w-full p-8 sm:p-10 rounded-3xl glass-panel border border-white/15 shadow-2xl text-left relative overflow-hidden will-change-transform"
             >
               <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
                 <div className="flex items-center space-x-2 text-rosePink-300">
@@ -94,8 +94,8 @@ export function SectionLetter() {
               key="envelope"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20, filter: "blur(10px)" }}
-              transition={{ duration: 0.6 }}
+              exit={{ opacity: 0, scale: 0.95, y: -15 }}
+              transition={{ duration: 0.4 }}
               onClick={() => setIsOpen(true)}
               className="group cursor-pointer w-full p-8 rounded-3xl glass-panel-pink border border-rosePink-300/30 hover:border-rosePink-300/60 shadow-glow-pink transition-all duration-500 flex flex-col items-center justify-center space-y-6"
             >

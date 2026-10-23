@@ -1,4 +1,4 @@
-name: CI/CD Production Pipeline (Render)
+name: CI/CD Pipeline (GitHub Pages Frontend + Render Backend)
 
 on:
   push:
@@ -7,13 +7,20 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  validate-and-test:
-    name: 🧪 Quality Verification & Production Build
+  validate-and-build:
+    name: 🧪 Build & Export Static Frontend
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,18 +32,46 @@ jobs:
           node-version: 22
           cache: "npm"
 
+      - name: Setup Pages Configuration
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm ci || npm install
 
       - name: Run TypeScript Verification
         run: npm run typecheck
 
-      - name: Run Next.js Production Build
+      - name: Build Next.js Static Export
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: npm run build
 
+      - name: Ensure .nojekyll exists
+        run: touch ./out/.nojekyll
+
+      - name: Upload GitHub Pages Artifact
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy-pages:
+    name: 🌐 Deploy Frontend to GitHub Pages Edge CDN
+    needs: validate-and-build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
   trigger-render-deploy:
-    name: 🚀 Deploy to Render
-    needs: validate-and-test
+    name: 🚀 Deploy Backend to Render (Optional)
+    needs: validate-and-build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
@@ -58,6 +93,6 @@ jobs:
               exit 1
             fi
           else
-            echo "ℹ️ Note: RENDER_DEPLOY_HOOK_URL secret is not set in GitHub repository settings."
-            echo "ℹ️ Render will deploy automatically if connected via Render Git auto-deploy (Blueprint), or you can add RENDER_DEPLOY_HOOK_URL in GitHub Secrets for CI/CD webhook triggers."
+            echo "ℹ️ Note: RENDER_DEPLOY_HOOK_URL is not set."
+            echo "ℹ️ Since this is a static frontend running on GitHub Pages CDN, a backend on Render is optional."
           fi

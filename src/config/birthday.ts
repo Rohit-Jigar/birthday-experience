@@ -54,6 +54,12 @@ export interface BirthdayConfig {
   };
 }
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+export const getAssetPath = (path: string) =>
+  path.startsWith("http://") || path.startsWith("https://")
+    ? path
+    : `${basePath}${path.startsWith("/") ? path : `/${path}`}`;
+
 export const birthdayConfig: BirthdayConfig = {
   recipientName: "You",
   birthdayDate: "November 7",
@@ -64,7 +70,7 @@ export const birthdayConfig: BirthdayConfig = {
     line3: "Take your time and take a breath.",
     buttonText: "Begin the Journey ↓",
   },
-  mainPhoto: "/images/photo-1.jpg",
+  mainPhoto: getAssetPath("/images/photo-1.jpg"),
   cakeMessage: "May every silent wish of your kind heart come true ✦",
   letter: {
     title: "A Letter from the Heart",
@@ -84,28 +90,28 @@ export const birthdayConfig: BirthdayConfig = {
       title: "A Radiant Smile",
       date: "Captured in Time",
       caption: "A genuine glimpse of happiness, holding light in every gentle glance.",
-      image: "/images/photo-1.jpg",
+      image: getAssetPath("/images/photo-1.jpg"),
     },
     {
       id: "2",
       title: "Grace & Serenity",
       date: "Treasured Chapter",
       caption: "An effortless warmth and calm that remains truly unforgettable.",
-      image: "/images/photo-2.jpg",
+      image: getAssetPath("/images/photo-2.jpg"),
     },
     {
       id: "3",
       title: "Timeless Moments",
       date: "Always Cherished",
       caption: "Some memories don't fade; they stay softly etched in the heart forever.",
-      image: "/images/photo-3.jpg",
+      image: getAssetPath("/images/photo-3.jpg"),
     },
     {
       id: "4",
       title: "Gentle Reflections",
       date: "A Beautiful Story",
       caption: "The quiet moments of laughter and understanding that time preserves with dignity.",
-      image: "/images/photo-4.jpg",
+      image: getAssetPath("/images/photo-4.jpg"),
     },
   ],
   playlist: [
@@ -113,24 +119,24 @@ export const birthdayConfig: BirthdayConfig = {
       id: "s1",
       title: "The Last Letter",
       artist: "Maan Panu",
-      src: "/audio/the-last-letter.m4a",
-      cover: "/images/photo-1.jpg",
+      src: getAssetPath("/audio/the-last-letter.m4a"),
+      cover: getAssetPath("/images/photo-1.jpg"),
       duration: "3:42",
     },
     {
       id: "s2",
       title: "ONLY",
       artist: "Lee Hi",
-      src: "/music/song3.mp3",
-      cover: "/covers/song3.jpg",
+      src: getAssetPath("/music/song3.mp3"),
+      cover: getAssetPath("/covers/song3.jpg"),
       duration: "2:50",
     },
     {
       id: "s3",
       title: "Some",
       artist: "Soyu & Junggigo",
-      src: "/music/song1.mp3",
-      cover: "/covers/song1.jpg",
+      src: getAssetPath("/music/song1.mp3"),
+      cover: getAssetPath("/covers/song1.jpg"),
       duration: "3:29",
     },
   ],

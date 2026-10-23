@@ -14,11 +14,11 @@ export function SectionHero() {
       <div className="absolute w-[480px] h-[480px] bg-rosePink-300/12 rounded-full blur-[130px] pointer-events-none" />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="relative flex items-center justify-center mb-10"
+        initial={{ opacity: 0, scale: 0.85 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="relative flex items-center justify-center mb-10 will-change-transform"
       >
         <div className="absolute w-80 h-80 sm:w-[410px] sm:h-[410px] pointer-events-none opacity-50 animate-spin-slow">
           <svg viewBox="0 0 200 200" className="w-full h-full text-rosePink-300">
@@ -74,10 +74,10 @@ export function SectionHero() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 1.2, delay: 0.3 }}
+        transition={{ duration: 1, delay: 0.2 }}
         className="space-y-3 max-w-md"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-cinzel font-normal tracking-wider text-textPrimary">

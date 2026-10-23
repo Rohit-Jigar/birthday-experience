@@ -31,14 +31,13 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 text-center z-10 select-none overflow-hidden">
       <motion.div
-        initial={{ scale: 0.1, opacity: 0.2, filter: "blur(20px)" }}
+        initial={{ scale: 0.8, opacity: 0.2 }}
         animate={{
-          scale: step >= 1 ? [1, 1.25, 1] : 0.2,
-          opacity: step >= 1 ? [0.45, 0.75, 0.5] : 0.2,
-          filter: "blur(45px)",
+          scale: step >= 1 ? [1, 1.15, 1] : 0.8,
+          opacity: step >= 1 ? [0.35, 0.6, 0.35] : 0.2,
         }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-rosePink-300/20 pointer-events-none"
+        className="absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-rosePink-300/20 blur-[50px] pointer-events-none will-change-transform"
       />
 
       <motion.div
@@ -55,9 +54,9 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
       <div className="flex flex-col items-center justify-center space-y-6 max-w-lg min-h-[160px]">
         {step >= 1 && (
           <motion.p
-            initial={{ opacity: 0, filter: "blur(12px)", y: 12 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="text-2xl sm:text-3xl font-light tracking-wide text-textPrimary font-serif italic"
           >
             {openingText.line1}
@@ -65,9 +64,9 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
         )}
         {step >= 2 && (
           <motion.p
-            initial={{ opacity: 0, filter: "blur(12px)", y: 12 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{ duration: 1.4, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="text-xl sm:text-2xl font-light text-rosePink-200 tracking-wider glow-text-pink"
           >
             {openingText.line2}
@@ -75,9 +74,9 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
         )}
         {step >= 3 && (
           <motion.p
-            initial={{ opacity: 0, filter: "blur(12px)", y: 12 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{ duration: 1.4, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="text-xs sm:text-sm font-light text-textSecondary tracking-widest uppercase font-cinzel"
           >
             {openingText.line3}
@@ -87,9 +86,9 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
 
       {step >= 4 && (
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="mt-12"
         >
           <button

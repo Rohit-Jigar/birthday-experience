@@ -15,13 +15,13 @@ function MemoryCard({ item, index }: MemoryCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.9, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.8, delay: 0.15 * index }}
-      whileHover={{ y: -8, scale: 1.02, rotate: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, delay: 0.1 * index }}
+      whileHover={{ y: -6, scale: 1.02, rotate: 0 }}
       style={{ rotate: `${index % 2 === 0 ? -1.5 : 1.5}deg` }}
-      className="group glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-rosePink-300/40 shadow-2xl text-left transition-all duration-500 cursor-pointer relative"
+      className="group glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 hover:border-rosePink-300/40 shadow-2xl text-left transition-all duration-500 cursor-pointer relative will-change-transform"
     >
       <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface mb-4 border border-white/5">
         {imgError ? (
@@ -34,6 +34,8 @@ function MemoryCard({ item, index }: MemoryCardProps) {
           <img
             src={item.image}
             alt={item.title}
+            loading="lazy"
+            decoding="async"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90 contrast-[1.02]"
           />

@@ -33,11 +33,11 @@ export function SectionWishes() {
         {wishes.map((wish, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 1, delay: 0.15 * idx }}
-            className="p-6 rounded-2xl glass-panel border border-white/10 hover:border-rosePink-300/30 transition-colors"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, delay: 0.1 * idx }}
+            className="p-6 rounded-2xl glass-panel border border-white/10 hover:border-rosePink-300/30 transition-colors will-change-transform"
           >
             <p className="text-lg sm:text-xl font-serif font-light text-textPrimary/90 italic tracking-wide">
               &quot;{wish}&quot;
@@ -46,11 +46,11 @@ export function SectionWishes() {
         ))}
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, filter: "blur(12px)" }}
-          whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 1.2, delay: 0.4 }}
-          className="p-8 sm:p-10 rounded-3xl glass-panel-pink border border-rosePink-300/40 shadow-glow-pink mt-12"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="p-8 sm:p-10 rounded-3xl glass-panel-pink border border-rosePink-300/40 shadow-glow-pink mt-12 will-change-transform"
         >
           <div className="flex justify-center mb-3">
             <Heart className="w-5 h-5 text-rosePink-300 fill-rosePink-300/40" />

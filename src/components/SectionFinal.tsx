@@ -25,23 +25,23 @@ export function SectionFinal({ onReplay }: SectionFinalProps) {
 
       <div className="relative max-w-lg w-full flex flex-col items-center justify-center min-h-[300px] space-y-8">
         <motion.p
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2 }}
+          transition={{ duration: 1 }}
           onAnimationComplete={() => setStep(1)}
-          className="text-xl sm:text-2xl font-serif text-textSecondary italic"
+          className="text-xl sm:text-2xl font-serif text-textSecondary italic will-change-transform"
         >
           {finalSurprise.waitLine1}
         </motion.p>
 
         {step >= 1 && (
           <motion.p
-            initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
             onAnimationComplete={() => setStep(2)}
-            className="text-lg sm:text-xl font-light text-rosePink-300/90 tracking-widest uppercase font-cinzel glow-text-pink"
+            className="text-lg sm:text-xl font-light text-rosePink-300/90 tracking-widest uppercase font-cinzel glow-text-pink will-change-transform"
           >
             {finalSurprise.waitLine2}
           </motion.p>
@@ -49,10 +49,10 @@ export function SectionFinal({ onReplay }: SectionFinalProps) {
 
         {step >= 2 && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, filter: "blur(16px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.5, delay: 1.2 }}
-            className="space-y-4 pt-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.8 }}
+            className="space-y-4 pt-6 will-change-transform"
           >
             <div className="flex items-center justify-center space-x-2 text-rosePink-300">
               <Heart className="w-5 h-5 fill-rosePink-300 animate-pulse" />

@@ -37,6 +37,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const audio = new Audio();
+    audio.preload = "metadata";
     audio.volume = volume;
     audioRef.current = audio;
 

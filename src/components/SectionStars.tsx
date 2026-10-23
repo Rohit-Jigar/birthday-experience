@@ -60,10 +60,10 @@ export function SectionStars() {
           {isCompleted ? (
             <motion.div
               key="secret-message"
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col items-center space-y-4 p-6 text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center space-y-4 p-6 text-center will-change-transform"
             >
               <div className="w-12 h-12 rounded-full bg-rosePink-300/20 border border-rosePink-300/40 flex items-center justify-center text-rosePink-300 shadow-glow-pink">
                 <Heart className="w-6 h-6 fill-rosePink-300" />
