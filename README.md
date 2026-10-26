@@ -1,6 +1,27 @@
 # Premium 3D Birthday Experience 🌹
 
-A bespoke, production-ready digital gift crafted with Next.js App Router, React 19, Three.js / React Three Fiber, Framer Motion, and Tailwind CSS.
+A bespoke, production-ready digital gift crafted with Next.js App Router, React 19, Framer Motion, Tailwind CSS, and Web Audio API.
+
+🌐 **Live Production Link:** [https://rohit-jigar.github.io/birthday-experience/](https://rohit-jigar.github.io/birthday-experience/)
+
+---
+
+## ✨ Production-Ready Features & Visual Sharing
+
+- 📱 **Rich Social Sharing Previews (OpenGraph & Twitter Cards):**
+  - Instant high-definition visual link preview when sharing on **WhatsApp, iMessage, Instagram, Telegram, Twitter, LinkedIn, and Facebook**.
+  - Includes custom 1200×630 luxury visual banner (`public/og-image.jpg`) with portrait halo framing, romantic typography, and Hindi quotation.
+- 🎁 **In-App Visual Share & QR Code Modal:**
+  - One-tap sharing to WhatsApp with custom birthday invitation copy.
+  - Native mobile system share sheet integration (`navigator.share`).
+  - Offline vector QR code generator for direct in-person phone camera scanning.
+  - One-tap link copying with animated glassmorphism confirmation toast.
+- 🚀 **Automated GitHub Pages CI/CD:**
+  - Automated static build and deployment pipeline on every push to `main`.
+  - Next.js static HTML export (`output: "export"`) with zero runtime server requirements.
+- 💎 **PWA & Mobile Ready:**
+  - `manifest.webmanifest`, `apple-touch-icon.png`, and high-res adaptive favicons.
+  - Safe-area viewport padding for iPhone dynamic islands and Android system gestures.
 
 ---
 
