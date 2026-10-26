@@ -30,7 +30,7 @@
 
 ---
 
-## 🌟 The 9 Chapters of the Experience
+## 🌟 The 10 Chapters of the Experience
 
 | Chapter | Title | Highlights |
 | :---: | :--- | :--- |
@@ -42,7 +42,8 @@
 | **06** | **Curated Soundtrack** | Animated spinning vinyl record sleeve with integrated audio controls, progress seeker, and volume slider. |
 | **07** | **Whispers of Hope** | Staggered fade-in cards containing sincere life blessings and the iconic Hindi reflection. |
 | **08** | **Interactive Star Constellation** | Interactive mini-game: search and collect 5 hidden glowing stars across the cosmos to unlock a secret message. |
-| **09** | **Grand Celebration Finale** | Rose-gold confetti cascade, sincere closing dedication, and replay experience navigation. |
+| **09** | **Grand Celebration Finale** | Rose-gold confetti cascade, sincere closing dedication ("Happy Birthday to You"), and reflection. |
+| **10** | **The Farewell Heartbeat** | Gentle *"wait......."* suspension, radiant animated SVG heart blooming with neon glow, and **"GOODBYE"** emerging from the heart core. |
 
 ---
 

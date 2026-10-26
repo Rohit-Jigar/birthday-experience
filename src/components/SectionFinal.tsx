@@ -2,14 +2,15 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Heart, Sparkles, RefreshCw } from "lucide-react";
+import { Heart, Sparkles, RefreshCw, ChevronDown } from "lucide-react";
 import { birthdayConfig } from "@/config/birthday";
 
 interface SectionFinalProps {
   onReplay: () => void;
+  onContinueToFarewell?: () => void;
 }
 
-export function SectionFinal({ onReplay }: SectionFinalProps) {
+export function SectionFinal({ onReplay, onContinueToFarewell }: SectionFinalProps) {
   const { finalSurprise } = birthdayConfig;
   const [step, setStep] = useState(0);
 
@@ -72,15 +73,25 @@ export function SectionFinal({ onReplay }: SectionFinalProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 2.2 }}
-              className="pt-10 flex items-center justify-center"
+              className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <button
                 onClick={onReplay}
-                className="group relative flex items-center space-x-2.5 px-8 py-3.5 rounded-full glass-panel-pink hover:border-rosePink-300/60 text-rosePink-300 text-xs tracking-widest uppercase transition-all duration-500 shadow-glow-pink hover:shadow-glow active:scale-95 mx-auto"
+                className="group relative flex items-center space-x-2.5 px-7 py-3.5 rounded-full bg-surface/80 hover:bg-surface border border-white/15 hover:border-white/30 text-textSecondary hover:text-textPrimary text-xs tracking-widest uppercase transition-all duration-300 active:scale-95"
               >
-                <RefreshCw className="w-4 h-4 text-rosePink-300 group-hover:rotate-180 transition-transform duration-700" />
+                <RefreshCw className="w-4 h-4 text-textSecondary group-hover:text-rosePink-300 group-hover:rotate-180 transition-transform duration-700" />
                 <span>{finalSurprise.replayButton}</span>
               </button>
+
+              {onContinueToFarewell && (
+                <button
+                  onClick={onContinueToFarewell}
+                  className="group relative flex items-center space-x-2.5 px-8 py-3.5 rounded-full glass-panel-pink hover:border-rosePink-300/60 text-rosePink-200 text-xs tracking-widest uppercase transition-all duration-500 shadow-glow-pink hover:shadow-glow active:scale-95"
+                >
+                  <span>Wait... There&apos;s one more thing</span>
+                  <ChevronDown className="w-4 h-4 text-rosePink-300 group-hover:translate-y-1 transition-transform" />
+                </button>
+              )}
             </motion.div>
           </motion.div>
         )}

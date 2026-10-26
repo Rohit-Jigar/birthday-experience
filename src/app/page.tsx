@@ -13,6 +13,7 @@ import { SectionSoundtrack } from "@/components/SectionSoundtrack";
 import { SectionWishes } from "@/components/SectionWishes";
 import { SectionStars } from "@/components/SectionStars";
 import { SectionFinal } from "@/components/SectionFinal";
+import { SectionGoodbye } from "@/components/SectionGoodbye";
 import { useAudio } from "@/context/audio-context";
 
 export default function BirthdayPage() {
@@ -57,7 +58,7 @@ export default function BirthdayPage() {
   return (
     <main className="relative min-h-screen bg-background text-textPrimary overflow-x-hidden selection:bg-champagne-300/30 selection:text-champagne-100">
       <ParticleBackground />
-      <SectionNav activeSection={activeSection} totalSections={9} />
+      <SectionNav activeSection={activeSection} totalSections={10} />
       <FloatingAudioWidget />
 
       <section
@@ -148,6 +149,22 @@ export default function BirthdayPage() {
         className="w-full min-h-screen"
       >
         <SectionFinal
+          onReplay={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            setActiveSection(1);
+          }}
+          onContinueToFarewell={() => scrollToSection(10)}
+        />
+      </section>
+
+      <section
+        ref={(el) => {
+          sectionRefs.current[9] = el;
+        }}
+        id="section-10"
+        className="w-full min-h-screen"
+      >
+        <SectionGoodbye
           onReplay={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
             setActiveSection(1);
