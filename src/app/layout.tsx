@@ -33,10 +33,16 @@ const rawSiteUrl =
     ? `https://${process.env.VERCEL_URL}`
     : "https://rohit-jigar.github.io/birthday-experience");
 
-const siteUrl = rawSiteUrl.replace(/\/$/, "");
+// Always use the origin for metadataBase so Next.js resolves basePath cleanly without duplication
+let originUrl = "https://rohit-jigar.github.io";
+try {
+  originUrl = new URL(rawSiteUrl).origin;
+} catch {
+  originUrl = "https://rohit-jigar.github.io";
+}
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(originUrl),
   title: {
     default: `Happy Birthday, ${birthdayConfig.recipientName} ✦ A Special Journey`,
     template: `%s | Birthday Experience`,
