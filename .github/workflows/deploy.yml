@@ -47,6 +47,7 @@ jobs:
       - name: Build Next.js Static Export
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.page_url }}
         run: npm run build
 
       - name: Ensure .nojekyll exists

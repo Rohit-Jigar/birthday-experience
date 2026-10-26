@@ -1,0 +1,3 @@
+# Allow all web crawlers and social media link scrapers (WhatsApp, Twitterbot, telegrambot, facebookexternalhit, etc.)
+User-agent: *
+Allow: /
