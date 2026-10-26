@@ -81,9 +81,9 @@ export function SectionHero() {
         className="space-y-3 max-w-md"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-cinzel font-normal tracking-wider text-textPrimary">
-          Happy Birthday,{" "}
+          Happy Birthday{" "}
           <span className="text-rosePink-300 font-serif italic glow-text-pink">
-            {recipientName}
+            to You
           </span>
         </h1>
         <p className="text-xs sm:text-sm text-textSecondary tracking-widest font-light uppercase">

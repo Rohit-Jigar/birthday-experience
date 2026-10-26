@@ -44,16 +44,15 @@ try {
 export const metadata: Metadata = {
   metadataBase: new URL(originUrl),
   title: {
-    default: `Happy Birthday, ${birthdayConfig.recipientName} ✦ A Special Journey`,
+    default: `Happy Birthday to You ✦ A Special Journey`,
     template: `%s | Birthday Experience`,
   },
   description: birthdayConfig.subtitle,
   applicationName: "Birthday Experience",
   keywords: [
-    "Happy Birthday",
+    "Happy Birthday to You",
     "Birthday Experience",
     "Digital Gift",
-    birthdayConfig.recipientName,
   ],
   authors: [{ name: "With Love" }],
   creator: "Birthday Experience",
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
     canonical: basePath ? `${basePath}/` : "/",
   },
   openGraph: {
-    title: `Happy Birthday, ${birthdayConfig.recipientName} ✦ A Special Journey`,
+    title: `Happy Birthday to You ✦ A Special Journey`,
     description: birthdayConfig.subtitle,
     url: basePath ? `${basePath}/` : "/",
     siteName: "Birthday Experience",
@@ -71,14 +70,14 @@ export const metadata: Metadata = {
         url: `${basePath}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `Happy Birthday, ${birthdayConfig.recipientName} - A Special Journey`,
+        alt: `Happy Birthday to You - A Special Journey`,
         type: "image/jpeg",
       },
       {
         url: `${basePath}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: `Happy Birthday, ${birthdayConfig.recipientName}`,
+        alt: `Happy Birthday to You`,
         type: "image/png",
       },
     ],
@@ -87,7 +86,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Happy Birthday, ${birthdayConfig.recipientName} ✦`,
+    title: `Happy Birthday to You ✦`,
     description: birthdayConfig.subtitle,
     images: [`${basePath}/og-image.jpg`],
   },
@@ -107,7 +106,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: `Birthday • ${birthdayConfig.recipientName}`,
+    title: `Happy Birthday to You`,
   },
   robots: {
     index: true,

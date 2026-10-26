@@ -3,7 +3,9 @@ const path = require('path');
 const sharp = require('sharp');
 
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
-const PHOTO_PATH = path.join(PUBLIC_DIR, 'images', 'photo-1.jpg');
+const GHIBLI_PATH = path.join(PUBLIC_DIR, 'images', 'ghibli-avatar.png');
+const FALLBACK_PHOTO_PATH = path.join(PUBLIC_DIR, 'images', 'photo-1.jpg');
+const PHOTO_PATH = fs.existsSync(GHIBLI_PATH) ? GHIBLI_PATH : FALLBACK_PHOTO_PATH;
 
 async function generateAll() {
   console.log('Generating production visual assets & social preview images...');
@@ -147,8 +149,8 @@ async function generateAll() {
   </text>
 
   <!-- Main Headline -->
-  <text x="460" y="172" fill="url(#goldText)" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="52" font-weight="700" letter-spacing="1">
-    Happy Birthday
+  <text x="460" y="172" fill="url(#goldText)" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="44" font-weight="700" letter-spacing="0.5">
+    Happy Birthday to You
   </text>
 
   <!-- Subtitle -->

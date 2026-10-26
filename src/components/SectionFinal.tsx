@@ -2,16 +2,15 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Heart, Sparkles, RefreshCw, Share2 } from "lucide-react";
+import { Heart, Sparkles, RefreshCw } from "lucide-react";
 import { birthdayConfig } from "@/config/birthday";
 
 interface SectionFinalProps {
   onReplay: () => void;
-  onShare: () => void;
 }
 
-export function SectionFinal({ onReplay, onShare }: SectionFinalProps) {
-  const { finalSurprise, recipientName } = birthdayConfig;
+export function SectionFinal({ onReplay }: SectionFinalProps) {
+  const { finalSurprise } = birthdayConfig;
   const [step, setStep] = useState(0);
 
   return (
@@ -62,7 +61,7 @@ export function SectionFinal({ onReplay, onShare }: SectionFinalProps) {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-cinzel font-bold tracking-wider text-textPrimary glow-text-pink">
-              Happy Birthday, {recipientName}
+              Happy Birthday to You
             </h1>
 
             <p className="text-base sm:text-lg font-serif text-rosePink-100 font-light italic max-w-sm mx-auto leading-relaxed">
@@ -73,21 +72,14 @@ export function SectionFinal({ onReplay, onShare }: SectionFinalProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 2.2 }}
-              className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="pt-10 flex items-center justify-center"
             >
               <button
                 onClick={onReplay}
-                className="group relative flex items-center space-x-2.5 px-7 py-3.5 rounded-full bg-surface/80 hover:bg-surface border border-white/15 hover:border-white/30 text-textSecondary hover:text-textPrimary text-xs tracking-widest uppercase transition-all duration-300 active:scale-95"
+                className="group relative flex items-center space-x-2.5 px-8 py-3.5 rounded-full glass-panel-pink hover:border-rosePink-300/60 text-rosePink-300 text-xs tracking-widest uppercase transition-all duration-500 shadow-glow-pink hover:shadow-glow active:scale-95 mx-auto"
               >
-                <RefreshCw className="w-4 h-4 text-textSecondary group-hover:text-rosePink-300 group-hover:rotate-180 transition-transform duration-700" />
+                <RefreshCw className="w-4 h-4 text-rosePink-300 group-hover:rotate-180 transition-transform duration-700" />
                 <span>{finalSurprise.replayButton}</span>
-              </button>
-              <button
-                onClick={onShare}
-                className="group relative flex items-center space-x-2.5 px-8 py-3.5 rounded-full glass-panel-pink hover:border-rosePink-300/60 text-rosePink-200 text-xs tracking-widest uppercase transition-all duration-500 shadow-glow-pink hover:shadow-glow active:scale-95"
-              >
-                <Share2 className="w-4 h-4 text-rosePink-300 group-hover:scale-110 transition-transform" />
-                <span>Share Gift 🎁</span>
               </button>
             </motion.div>
           </motion.div>

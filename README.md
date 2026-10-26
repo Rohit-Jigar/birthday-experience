@@ -1,90 +1,113 @@
-# Premium 3D Birthday Experience 🌹
+<div align="center">
 
-A bespoke, production-ready digital gift crafted with Next.js App Router, React 19, Framer Motion, Tailwind CSS, and Web Audio API.
+  <img src="public/images/ghibli-avatar.png" alt="Studio Ghibli Aesthetic Birthday Tribute" width="220" height="220" style="border-radius: 50%; border: 3px solid rgba(248, 200, 220, 0.4); box-shadow: 0 0 35px rgba(248, 200, 220, 0.35); object-fit: cover;" />
 
-🌐 **Live Production Link:** [https://rohit-jigar.github.io/birthday-experience/](https://rohit-jigar.github.io/birthday-experience/)
+  <br />
 
----
+  # ✨ Happy Birthday to You 🌹
+  
+  **A bespoke, cinematic digital gift crafted with quiet warmth, timeless memories & delicate aesthetics.**
 
-## ✨ Production-Ready Features & Visual Sharing
+  <p>
+    <a href="https://rohit-jigar.github.io/birthday-experience/"><img src="https://img.shields.io/badge/Live_Experience-Open_Here_✦-ff69b4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo" /></a>
+    <a href="https://github.com/Rohit-Jigar/birthday-experience"><img src="https://img.shields.io/badge/GitHub_Pages-Online-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="Deployment Status" /></a>
+  </p>
 
-- 📱 **Rich Social Sharing Previews (OpenGraph & Twitter Cards):**
-  - Instant high-definition visual link preview when sharing on **WhatsApp, iMessage, Instagram, Telegram, Twitter, LinkedIn, and Facebook**.
-  - Includes custom 1200×630 luxury visual banner (`public/og-image.jpg`) with portrait halo framing, romantic typography, and Hindi quotation.
-- 🎁 **In-App Visual Share & QR Code Modal:**
-  - One-tap sharing to WhatsApp with custom birthday invitation copy.
-  - Native mobile system share sheet integration (`navigator.share`).
-  - Offline vector QR code generator for direct in-person phone camera scanning.
-  - One-tap link copying with animated glassmorphism confirmation toast.
-- 🚀 **Automated GitHub Pages CI/CD:**
-  - Automated static build and deployment pipeline on every push to `main`.
-  - Next.js static HTML export (`output: "export"`) with zero runtime server requirements.
-- 💎 **PWA & Mobile Ready:**
-  - `manifest.webmanifest`, `apple-touch-icon.png`, and high-res adaptive favicons.
-  - Safe-area viewport padding for iPhone dynamic islands and Android system gestures.
+  <p>
+    <img src="https://img.shields.io/badge/Next.js-16.3-black?style=flat-square&logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/React-19.2-61dafb?style=flat-square&logo=react" alt="React" />
+    <img src="https://img.shields.io/badge/TailwindCSS-4.0-38b2ac?style=flat-square&logo=tailwind-css" alt="Tailwind" />
+    <img src="https://img.shields.io/badge/Framer_Motion-12.4-ff0055?style=flat-square&logo=framer" alt="Framer Motion" />
+    <img src="https://img.shields.io/badge/PWA-Ready-f08a5d?style=flat-square" alt="PWA Ready" />
+  </p>
 
----
+  <p>
+    <em>“कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।”</em><br/>
+    <sub>(Some bonds never truly end; only words quietly fall silent.)</sub>
+  </p>
 
-## 🌟 Overview of the Experience
-
-1. **Chapter 0: Cinematic Intro & Prologue**
-   - Midnight plum and rose-black cosmic atmosphere with drifting rose petals and glowing particles.
-   - Staggered typography entrance: *"A little world, made just for you."* and *"Some people leave beautiful memories wherever they go."*
-   - Center glowing crystal emblem with breathing pulse.
-   - Gentle invitation to begin the journey.
-
-2. **Chapter I: iPhone Lock Screen Simulation**
-   - Dynamic Island with camera sensor & audio wave.
-   - Realistic simulated status bar (Signal, Wi-Fi, Battery, Real Time).
-   - Large digital clock and dynamic date formatted for November 7.
-   - Romantic lockscreen notification banner featuring:  
-     *“कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।”*
-   - Flashlight and camera quick-action buttons.
-   - Interactive passcode keypad:
-     - **Passcode:** `0712`
-     - Visual haptic feedback, soft Web Audio glass taps.
-     - Gentle error shake on incorrect passcode.
-     - Full keyboard support (0-9, Backspace, Escape).
-
-3. **Chapter II: Three-Dimensional Romantic Universe**
-   - Centerpiece 3D Glass Heart created with parametric ExtrudeGeometry and physical glass material (`meshPhysicalMaterial`).
-   - Dual rotating translucent celestial rings (`#F2D7B0` champagne and `#E8A5B8` soft rose).
-   - Starry galaxy depth with 1,200 floating stars and smooth pointer parallax.
-   - Graceful CSS fallback for low-power mobile or non-WebGL devices.
-
-4. **Chapter III: Photograph Gallery & Memories**
-   - 3 Curated photographs revealed in floating 3D Polaroid / glass memory frames.
-   - Interactive 3D tilt and light sweep effects.
-   - High-resolution fullscreen lightbox with smooth keyboard and touch navigation.
-
-5. **Chapter IV: Handwritten Birthday Letter & Candle**
-   - Animated envelope with wax seal stamped with a heart.
-   - Unfolding vintage parchment letter with delicate serif typography.
-   - Sincere, dignified message with no pressure.
-   - Interactive birthday candle: tap to blow out flame and make a silent wish with golden sparkle particles.
-
-6. **Chapter V: Final Celebration & Wishes**
-   - Champagne and rose confetti shower (`canvas-confetti`).
-   - Sincere closing wishes and dedication.
-   - Replay journey and revisit photos navigation.
+</div>
 
 ---
 
-## 🚀 Quick Start & Local Development
+## 🌟 The 9 Chapters of the Experience
 
-### 1. Requirements
-- Node.js `>= 18.18` (Node 24 recommended)
+| Chapter | Title | Highlights |
+| :---: | :--- | :--- |
+| **01** | **Cinematic Prologue** | Midnight cosmic atmosphere, drifting rose petals, breathing glow orb, and gentle entrance typography. |
+| **02** | **Hero Birthday Dedication** | Floating luxury avatar framed with celestial orbits, champagne stars, and personal dedication. |
+| **03** | **Interactive Birthday Cake** | Tap the flame to make a secret wish; blows out with golden sparkle particle confetti. |
+| **04** | **Handwritten Letter** | Interactive vintage envelope sealed with wax heart; unfolds a sincere, heartfelt personal letter. |
+| **05** | **Cherished Moments Gallery** | Floating glassmorphism Polaroid cards with interactive 3D tilt, subtle light sweeps, and timestamps. |
+| **06** | **Curated Soundtrack** | Animated spinning vinyl record sleeve with integrated audio controls, progress seeker, and volume slider. |
+| **07** | **Whispers of Hope** | Staggered fade-in cards containing sincere life blessings and the iconic Hindi reflection. |
+| **08** | **Interactive Star Constellation** | Interactive mini-game: search and collect 5 hidden glowing stars across the cosmos to unlock a secret message. |
+| **09** | **Grand Celebration Finale** | Rose-gold confetti cascade, sincere closing dedication, and replay experience navigation. |
+
+---
+
+## 🎨 Visual Sharing & Privacy-First Design
+
+- **🌸 Studio Ghibli Aesthetic Tribute:**
+  - The public repository and open-source cards feature an original, charming **Studio Ghibli / Hayao Miyazaki-inspired anime illustration** (`ghibli-avatar.png`), keeping personal privacy preserved while presenting an enchanting aesthetic.
+- **📱 Rich Social Link Previews (OpenGraph & Twitter):**
+  - Instant high-definition card preview when sharing on **WhatsApp, iMessage, Instagram, Telegram, Twitter, LinkedIn, and Facebook**.
+  - Custom 1200×630 luxury visual banner (`public/og-image.jpg`) with starry nebula backdrop, halo avatar frame, and refined typography.
+- **💎 Progressive Web App (PWA):**
+  - Integrated `manifest.webmanifest`, `apple-touch-icon.png`, and high-resolution adaptive favicons (`favicon.ico`, `icon-192.png`, `icon-512.png`).
+  - Dark obsidian theme (`#050507`) with native iOS safe-area handling.
+
+---
+
+## 🛠 Tech Stack & Architecture
+
+```
+birthday-experience/
+├── .github/workflows/deploy.yml   # Automated GitHub Pages Edge CDN CI/CD
+├── public/
+│   ├── audio/                     # Curated audio soundtrack
+│   ├── covers/                    # Music album artworks
+│   ├── images/
+│   │   ├── ghibli-avatar.png      # Cute Ghibli aesthetic tribute art
+│   │   ├── photo-[1..4].jpg       # Personal memory snapshots
+│   │   └── memory-[1..4].jpg      # Treasured moment cards
+│   ├── og-image.jpg               # 1200x630 Social share banner
+│   ├── manifest.webmanifest       # PWA Web manifest
+│   ├── apple-touch-icon.png       # iOS Homescreen icon
+│   └── favicon.ico                # Adaptive browser icon
+├── scripts/
+│   └── generate-assets.js         # Automated OG & icon artwork generator
+└── src/
+    ├── app/
+    │   ├── layout.tsx             # Absolute SEO, OpenGraph & viewport configuration
+    │   └── page.tsx               # Main chapter orchestrator
+    ├── components/                # 9 Immersive chapter components & audio widget
+    ├── config/birthday.ts         # Centralized configuration (all copy, quotes & music)
+    └── context/audio-context.tsx  # Offline audio player state management
+```
+
+---
+
+## 🚀 Local Development & Quick Start
+
+### 1. Prerequisites
+- Node.js `>= 18.18` (Node 22 or 24 recommended)
 - npm `>= 9`
 
-### 2. Install & Run
+### 2. Installation
 ```bash
+git clone https://github.com/Rohit-Jigar/birthday-experience.git
 cd birthday-experience
 npm install
+```
+
+### 3. Start Development Server
+```bash
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 3. Verify Build & Types
+### 4. Build & Verify Static Export
 ```bash
 npm run typecheck
 npm run build
@@ -92,80 +115,41 @@ npm run build
 
 ---
 
-## 📸 Adding or Replacing Photographs
+## ✍️ Customizing the Experience
 
-All personal photos are located in `public/images/`:
-- `public/images/photo-1.jpg`
-- `public/images/photo-2.jpg`
-- `public/images/photo-3.jpg`
+All messages, recipient names, dates, quotes, and music tracks are centralized in **one single file**:  
+[`src/config/birthday.ts`](src/config/birthday.ts)
 
-To replace any photograph:
-1. Copy your desired image into `public/images/`.
-2. Name it `photo-1.jpg`, `photo-2.jpg`, or `photo-3.jpg` (or update paths in `src/config/birthday.ts`).
-
----
-
-## ✍️ Customizing Personal Content
-
-All copy, names, dates, quotes, and passcodes are centralized in **one single file**:
-[`src/config/birthday.ts`](file:///D:/Manu/birthday-experience/src/config/birthday.ts)
-
-Key configuration fields:
 ```typescript
-export const BIRTHDAY_CONFIG = {
+export const birthdayConfig = {
   recipientName: "You",
   birthdayDate: "November 7",
-  passcode: "0712", // Phone lock code
-
-  personalQuote: {
-    hindi: "कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।",
-    english: "Some bonds never truly end; only words quietly fall silent.",
-  },
-
+  subtitle: "November 7 • A world made with gratitude & quiet love",
+  
   letter: {
-    salutation: "Happy Birthday,",
+    title: "A Letter from the Heart",
+    greeting: "Happy Birthday to you,",
     paragraphs: [...],
-    favoriteMemoryText: "...",
-    birthdayWishText: "...",
+    closing: "With quiet gratitude and warmth,",
+    sender: "Take care of yourself, always ♡",
   },
+  
+  finalWishQuote: "“कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।”",
 };
 ```
 
 ---
 
-## 🌐 Deploying to Vercel
+## 🌐 Deployment to GitHub Pages
 
-### Method 1: Using Vercel CLI
-```bash
-# In the birthday-experience folder:
-npx vercel
-```
-Follow the simple CLI prompts:
-- Link to existing project? **No**
-- Project name: `birthday-experience`
-- Directory: `./`
-- Deploy to production: `npx vercel --prod`
-
-### Method 2: Deploying via GitHub & Vercel Dashboard
-1. Create a private GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: complete premium 3D birthday experience"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-   git push -u origin main
-   ```
-2. Go to [https://vercel.com/new](https://vercel.com/new).
-3. Import your GitHub repository.
-4. Framework Preset will automatically detect **Next.js**.
-5. Click **Deploy**.
+This project is set up with automated **GitHub Actions CI/CD**:
+1. Any commit pushed to the `main` branch triggers `.github/workflows/deploy.yml`.
+2. Automatically installs dependencies, runs TypeScript verification, builds the Next.js static export (`output: "export"`), and deploys to GitHub Pages Edge CDN.
+3. Access your live website at:  
+   **`https://<your-username>.github.io/<repo-name>/`**
 
 ---
 
-## ♿ Performance & Accessibility
-
-- **Zero API Keys Required**: Procedural Web Audio API sound effects and ambient chimes work 100% offline.
-- **Mobile First**: Optimized touch targets, Android Chrome & iOS Safari compatibility, viewport safe areas.
-- **Reduced Motion**: Respects `prefers-reduced-motion` to disable particle animations and 3D camera shifts.
-- **WebGL Fallback**: If WebGL is disabled or unsupported on older devices, automatically switches to a graceful CSS glassmorphism rendering.
+<div align="center">
+  <sub>Crafted with quiet gratitude, gentle memories & timeless warmth ♡</sub>
+</div>

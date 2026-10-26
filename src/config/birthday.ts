@@ -74,7 +74,7 @@ export const birthdayConfig: BirthdayConfig = {
   cakeMessage: "May every silent wish of your kind heart come true ✦",
   letter: {
     title: "A Letter from the Heart",
-    greeting: "Happy Birthday,",
+    greeting: "Happy Birthday to you,",
     paragraphs: [
       "I wanted to make something a little different for your special day. Some people become an indelible part of our story, and the memories they leave behind continue to mean something profound.",
       "“कुछ रिश्ते खत्म नहीं होते, बस बात करना बंद हो जाती है।”",
@@ -159,7 +159,7 @@ export const birthdayConfig: BirthdayConfig = {
   finalSurprise: {
     waitLine1: "Wait...",
     waitLine2: "There's one more thing.",
-    headline: "Happy Birthday",
+    headline: "Happy Birthday to You",
     subline: "May this year be the gentlest, brightest, and most peaceful chapter of your journey.",
     replayButton: "Replay Experience ↻",
   },

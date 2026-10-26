@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
-import { Share2 } from "lucide-react";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { SectionNav } from "@/components/SectionNav";
 import { FloatingAudioWidget } from "@/components/FloatingAudioWidget";
@@ -15,12 +13,10 @@ import { SectionSoundtrack } from "@/components/SectionSoundtrack";
 import { SectionWishes } from "@/components/SectionWishes";
 import { SectionStars } from "@/components/SectionStars";
 import { SectionFinal } from "@/components/SectionFinal";
-import { VisualShareModal } from "@/components/VisualShareModal";
 import { useAudio } from "@/context/audio-context";
 
 export default function BirthdayPage() {
   const [activeSection, setActiveSection] = useState(1);
-  const [isShareOpen, setIsShareOpen] = useState(false);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const { pause } = useAudio();
 
@@ -156,33 +152,8 @@ export default function BirthdayPage() {
             window.scrollTo({ top: 0, behavior: "smooth" });
             setActiveSection(1);
           }}
-          onShare={() => setIsShareOpen(true)}
         />
       </section>
-
-      {/* Floating Quick Share Button */}
-      <div className="fixed bottom-6 left-6 z-40">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setIsShareOpen(true)}
-          className="relative flex items-center space-x-2 px-3.5 py-2.5 sm:px-4 rounded-full glass-panel hover:border-rosePink-300/50 transition-all duration-300 shadow-lg text-textPrimary group cursor-pointer"
-          aria-label="Share Gift"
-        >
-          <div className="w-5 h-5 rounded-full bg-rosePink-300/20 flex items-center justify-center text-rosePink-300 group-hover:scale-110 transition-transform">
-            <Share2 className="w-3 h-3" />
-          </div>
-          <span className="text-xs font-medium tracking-wide text-textSecondary group-hover:text-rosePink-200 transition-colors hidden sm:inline">
-            Share Gift
-          </span>
-        </motion.button>
-      </div>
-
-      {/* Visual Share & QR Modal */}
-      <VisualShareModal
-        isOpen={isShareOpen}
-        onClose={() => setIsShareOpen(false)}
-      />
     </main>
   );
 }
