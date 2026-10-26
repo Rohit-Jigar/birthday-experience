@@ -50,6 +50,17 @@ export function ParticleBackground() {
       });
     }
 
+    // Shooting Star state
+    const shootingStar = {
+      active: false,
+      x: 0,
+      y: 0,
+      length: 120,
+      speed: 15,
+      opacity: 0,
+      nextSpawn: performance.now() + 3500,
+    };
+
     let isVisible = !document.hidden;
     const handleVisibilityChange = () => {
       isVisible = !document.hidden;
@@ -78,6 +89,7 @@ export function ParticleBackground() {
 
       ctx.clearRect(0, 0, width, height);
 
+      // Render drifting starlight particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.y += p.speedY * delta;
@@ -95,17 +107,67 @@ export function ParticleBackground() {
 
         const currentAlpha = Math.max(0, Math.min(1, p.opacity));
 
-        // High-performance soft glow without expensive GPU shadowBlur
+        // Soft glow halo
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 2.2, 0, 2 * Math.PI);
         ctx.fillStyle = `${p.color}${(currentAlpha * 0.25).toFixed(3)})`;
         ctx.fill();
 
-        // Inner glowing core
+        // Sharp particle core
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
         ctx.fillStyle = `${p.color}${currentAlpha.toFixed(3)})`;
         ctx.fill();
+      }
+
+      // Render Shooting Star
+      if (!shootingStar.active && time > shootingStar.nextSpawn) {
+        shootingStar.active = true;
+        shootingStar.x = Math.random() * (width * 0.7);
+        shootingStar.y = Math.random() * (height * 0.35);
+        shootingStar.length = Math.random() * 80 + 110;
+        shootingStar.opacity = 1;
+      }
+
+      if (shootingStar.active) {
+        const angle = Math.PI / 4; // 45 deg angle
+        const dx = Math.cos(angle);
+        const dy = Math.sin(angle);
+
+        shootingStar.x += dx * shootingStar.speed * delta;
+        shootingStar.y += dy * shootingStar.speed * delta;
+        shootingStar.opacity -= 0.014 * delta;
+
+        if (shootingStar.opacity > 0) {
+          const grad = ctx.createLinearGradient(
+            shootingStar.x,
+            shootingStar.y,
+            shootingStar.x - dx * shootingStar.length,
+            shootingStar.y - dy * shootingStar.length
+          );
+          grad.addColorStop(0, `rgba(255, 255, 255, ${shootingStar.opacity})`);
+          grad.addColorStop(0.3, `rgba(248, 200, 220, ${(shootingStar.opacity * 0.8).toFixed(2)})`);
+          grad.addColorStop(1, "rgba(248, 200, 220, 0)");
+
+          ctx.beginPath();
+          ctx.moveTo(shootingStar.x, shootingStar.y);
+          ctx.lineTo(
+            shootingStar.x - dx * shootingStar.length,
+            shootingStar.y - dy * shootingStar.length
+          );
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.8;
+          ctx.stroke();
+
+          // Star head
+          ctx.beginPath();
+          ctx.arc(shootingStar.x, shootingStar.y, 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${shootingStar.opacity})`;
+          ctx.fill();
+        } else {
+          shootingStar.active = false;
+          shootingStar.nextSpawn = time + Math.random() * 9000 + 7000;
+        }
       }
 
       animId = requestAnimationFrame(render);
@@ -122,6 +184,7 @@ export function ParticleBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden transform-gpu">
+      {/* Subtle background ambient nebulas */}
       <div className="absolute -top-32 -left-32 w-[420px] h-[420px] bg-rosePink-300/15 rounded-full blur-[130px] pointer-events-none animate-pulse-glow will-change-transform" />
       <div
         className="absolute top-1/3 -right-40 w-[520px] h-[520px] bg-rosePink-200/10 rounded-full blur-[160px] pointer-events-none animate-pulse-glow will-change-transform"
