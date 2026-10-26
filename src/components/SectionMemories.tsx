@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Heart, Calendar, RotateCcw, Sparkles } from "lucide-react";
 import { birthdayConfig, MemoryItem } from "@/config/birthday";
+import { triggerHaptic } from "@/utils/haptics";
 
 const MEMORY_BACK_NOTES: Record<string, string> = {
   "1": "A radiant smile that effortlessly brings light into any room. Never lose that genuine warmth and sweet energy.",
@@ -23,10 +24,15 @@ function MemoryCard({ item, index }: MemoryCardProps) {
 
   const backNote = MEMORY_BACK_NOTES[item.id] || item.caption;
 
+  const handleFlip = () => {
+    triggerHaptic("light");
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <div
       className="perspective-1000 w-full min-h-[380px] sm:min-h-[400px] cursor-pointer select-none"
-      onClick={() => setIsFlipped(!isFlipped)}
+      onClick={handleFlip}
     >
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}

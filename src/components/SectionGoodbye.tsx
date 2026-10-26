@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { RefreshCw } from "lucide-react";
+import { triggerHaptic } from "@/utils/haptics";
 
 interface SectionGoodbyeProps {
   onReplay: () => void;
@@ -25,16 +26,32 @@ export function SectionGoodbye({ onReplay }: SectionGoodbyeProps) {
     // After 2.4 seconds, start heart drawing
     const t1 = setTimeout(() => {
       setPhase(2);
+      triggerHaptic("light");
     }, 2400);
+
+    let hapticInterval: NodeJS.Timeout | null = null;
 
     // After 4.2 seconds, reveal "GOODBYE" inside the beating heart
     const t2 = setTimeout(() => {
       setPhase(3);
+      triggerHaptic("heartbeat");
+
+      // Double pulse haptic synced with heartbeat animation (1.35s period)
+      let beats = 0;
+      hapticInterval = setInterval(() => {
+        beats++;
+        if (beats >= 4) {
+          if (hapticInterval) clearInterval(hapticInterval);
+        } else {
+          triggerHaptic("heartbeat");
+        }
+      }, 1350);
     }, 4200);
 
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
+      if (hapticInterval) clearInterval(hapticInterval);
     };
   }, [inView]);
 

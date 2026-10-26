@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import confetti from "canvas-confetti";
 import { Sparkles, Flame, Heart, Mic, MicOff } from "lucide-react";
 import { birthdayConfig } from "@/config/birthday";
+import { triggerHaptic } from "@/utils/haptics";
 
 export function SectionCake() {
   const { cakeMessage } = birthdayConfig;
@@ -98,6 +99,7 @@ export function SectionCake() {
 
   const blowAllCandles = () => {
     setCandles([false, false, false]);
+    triggerHaptic("success");
     confetti({
       particleCount: 50,
       spread: 90,
@@ -114,6 +116,7 @@ export function SectionCake() {
       const willBeLit = !updated[index];
       updated[index] = willBeLit;
       if (!willBeLit) {
+        triggerHaptic("medium");
         confetti({
           particleCount: 15,
           spread: 40,
@@ -122,6 +125,8 @@ export function SectionCake() {
           ticks: 120,
           gravity: 0.8,
         });
+      } else {
+        triggerHaptic("light");
       }
       return updated;
     });

@@ -4,10 +4,22 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Heart, Mail, MailOpen, ArrowRight } from "lucide-react";
 import { birthdayConfig } from "@/config/birthday";
+import { OpenWhenVault } from "./OpenWhenVault";
+import { triggerHaptic } from "@/utils/haptics";
 
 export function SectionLetter() {
   const { letter } = birthdayConfig;
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenMain = () => {
+    triggerHaptic("medium");
+    setIsOpen(true);
+  };
+
+  const handleCloseMain = () => {
+    triggerHaptic("light");
+    setIsOpen(false);
+  };
 
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 text-center z-10 py-20 overflow-hidden">
@@ -29,7 +41,7 @@ export function SectionLetter() {
         </h2>
       </motion.div>
 
-      <div className="w-full max-w-lg min-h-[380px] flex items-center justify-center">
+      <div className="w-full max-w-lg min-h-[380px] flex flex-col items-center justify-center">
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div
@@ -48,7 +60,7 @@ export function SectionLetter() {
                   </span>
                 </div>
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleCloseMain}
                   className="text-[10px] uppercase tracking-widest text-textSecondary hover:text-rosePink-300 transition-colors"
                 >
                   Close ×
@@ -96,7 +108,7 @@ export function SectionLetter() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -15 }}
               transition={{ duration: 0.4 }}
-              onClick={() => setIsOpen(true)}
+              onClick={handleOpenMain}
               className="group cursor-pointer w-full p-8 rounded-3xl glass-panel-pink border border-rosePink-300/30 hover:border-rosePink-300/60 shadow-glow-pink transition-all duration-500 flex flex-col items-center justify-center space-y-6"
             >
               <div className="w-16 h-16 rounded-full bg-rosePink-300/15 flex items-center justify-center text-rosePink-300 group-hover:scale-110 group-hover:bg-rosePink-300/25 transition-all duration-300">
@@ -117,6 +129,9 @@ export function SectionLetter() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Secret Mini Envelopes Vault */}
+        <OpenWhenVault />
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Star, Heart } from "lucide-react";
 import { birthdayConfig } from "@/config/birthday";
+import { triggerHaptic } from "@/utils/haptics";
 
 const STAR_POSITIONS = [
   { id: 1, top: "25%", left: "20%", delay: 0 },
@@ -20,7 +21,13 @@ export function SectionStars() {
 
   const handleStarClick = (id: number) => {
     if (!collected.includes(id)) {
-      setCollected((prev) => [...prev, id]);
+      const next = [...collected, id];
+      setCollected(next);
+      if (next.length >= targetCount) {
+        triggerHaptic("success");
+      } else {
+        triggerHaptic("light");
+      }
     }
   };
 

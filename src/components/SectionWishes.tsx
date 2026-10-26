@@ -5,6 +5,8 @@ import { motion } from "motion/react";
 import confetti from "canvas-confetti";
 import { Sparkles, Heart } from "lucide-react";
 import { birthdayConfig } from "@/config/birthday";
+import { triggerHaptic } from "@/utils/haptics";
+import { FloatingSkyLantern } from "./FloatingSkyLantern";
 
 function GoldenScratchCard() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -67,6 +69,8 @@ function GoldenScratchCard() {
     ctx.arc(x, y, 22, 0, Math.PI * 2);
     ctx.fill();
 
+    triggerHaptic("scratch");
+
     // Check scratched percentage occasionally
     if (Math.random() < 0.25) {
       checkScratched();
@@ -91,6 +95,7 @@ function GoldenScratchCard() {
       if (transparentPixels / totalSampled > 0.4) {
         isRevealedRef.current = true;
         setIsRevealed(true);
+        triggerHaptic("success");
         confetti({
           particleCount: 30,
           spread: 60,
@@ -188,6 +193,9 @@ export function SectionWishes() {
 
         {/* Digital Golden Scratch Card */}
         <GoldenScratchCard />
+
+        {/* Floating Sky Lantern Wish */}
+        <FloatingSkyLantern />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

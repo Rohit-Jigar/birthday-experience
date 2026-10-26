@@ -34,16 +34,16 @@
 
 | Chapter | Title | Highlights |
 | :---: | :--- | :--- |
-| **01** | **Cinematic Prologue** | Midnight cosmic atmosphere, shooting stars crossing the night sky, drifting rose petals, breathing glow orb, and gentle entrance typography. |
+| **01** | **Cinematic Prologue** | Midnight cosmic atmosphere, **shooting stars crossing the night sky**, **gyroscope mobile 3D tilt**, drifting rose petals, and breathing glow orb. |
 | **02** | **Hero Birthday Dedication** | Floating luxury avatar framed with celestial orbits, champagne stars, and personal dedication. |
-| **03** | **Interactive Birthday Cake** | **Microphone-powered candle blowing** (Web Audio Analyser air-blow detection) with flame tap fallback; blows out with golden sparkle confetti. |
-| **04** | **Handwritten Letter** | Interactive vintage envelope sealed with wax heart; unfolds a sincere, heartfelt personal letter. |
+| **03** | **Interactive Birthday Cake** | **Microphone-powered candle blowing** (Web Audio Analyser air-blow detection) + flame tap fallback with haptic feedback & confetti. |
+| **04** | **Handwritten Letter & Secret Vault** | Interactive wax-sealed envelope unfolding personal letter + **"Open When..." Secret Vault** with 3 sealed miniature letters for the days ahead. |
 | **05** | **Cherished Moments Gallery** | **3D double-sided flipping Polaroids** (`rotateY: 180°`); flip any memory to uncover vintage handwritten notes and heart wax stamps. |
 | **06** | **Curated Soundtrack** | Animated spinning vinyl record sleeve with integrated audio controls, progress seeker, and volume slider. |
-| **07** | **Whispers of Hope & Golden Scratch Card** | Staggered fade-in cards plus an **interactive gold foil scratch card** that you can scratch with your mouse or finger to uncover a hidden blessing. |
-| **08** | **Interactive Star Constellation** | Interactive mini-game: search and collect 5 hidden glowing stars across the cosmos to unlock a secret message. |
+| **07** | **Whispers of Hope, Scratch Card & Sky Lantern** | **Interactive gold foil scratch card** + **Floating Celestial Sky Lantern** (type or pick a secret wish and watch it float into the universe with glowing embers). |
+| **08** | **Interactive Star Constellation** | Interactive mini-game: search and collect 5 hidden glowing stars across the cosmos with tactile haptics to unlock a secret message. |
 | **09** | **Grand Celebration Finale** | Rose-gold confetti cascade, sincere closing dedication ("Happy Birthday to You"), and instant **"Save Postcard 💌" high-res (1200×800) keepsake PNG download**. |
-| **10** | **The Farewell Heartbeat** | Gentle *"wait......."* suspension, large symmetrical baby-pink pulsing heart beating like a real heartbeat, and **"GOODBYE"** blooming from within. |
+| **10** | **The Farewell Heartbeat** | Gentle *"wait......."* suspension, large symmetrical baby-pink pulsing heart beating like a real heartbeat with **synchronized physical haptic pulse**, and **"GOODBYE"** blooming from within. |
 
 ---
 

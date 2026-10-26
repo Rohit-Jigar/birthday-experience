@@ -81,19 +81,37 @@ export function ParticleBackground() {
     };
     window.addEventListener("resize", handleResize, { passive: true });
 
+    // Gyroscope tilt tracking for physical mobile depth
+    let tiltX = 0;
+    let tiltY = 0;
+    let targetTiltX = 0;
+    let targetTiltY = 0;
+
+    const handleOrientation = (e: DeviceOrientationEvent) => {
+      if (e.gamma !== null && e.beta !== null) {
+        targetTiltX = Math.max(-24, Math.min(24, e.gamma)) * 0.35;
+        targetTiltY = Math.max(-24, Math.min(24, e.beta - 45)) * 0.25;
+      }
+    };
+    window.addEventListener("deviceorientation", handleOrientation, { passive: true });
+
     let lastTime = performance.now();
     const render = (time: number) => {
       if (!isVisible) return;
       const delta = Math.min((time - lastTime) / 16.666, 2);
       lastTime = time;
 
+      // Smooth interpolation of gyroscope tilt
+      tiltX += (targetTiltX - tiltX) * 0.06;
+      tiltY += (targetTiltY - tiltY) * 0.06;
+
       ctx.clearRect(0, 0, width, height);
 
-      // Render drifting starlight particles
+      // Render drifting starlight particles with subtle parallax
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        p.y += p.speedY * delta;
-        p.x += p.speedX * delta;
+        p.y += (p.speedY + tiltY * 0.012) * delta;
+        p.x += (p.speedX + tiltX * 0.012) * delta;
         p.opacity += p.pulseSpeed * delta;
         if (p.opacity > p.maxOpacity || p.opacity < 0.05) {
           p.pulseSpeed = -p.pulseSpeed;
@@ -178,6 +196,7 @@ export function ParticleBackground() {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("deviceorientation", handleOrientation);
       cancelAnimationFrame(animId);
     };
   }, []);
