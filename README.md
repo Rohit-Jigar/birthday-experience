@@ -1,19 +1,8 @@
 <div align="center">
 
-  <table border="0" style="border: none; background: transparent;">
-    <tr>
-      <td align="center" style="border: none; padding: 12px 18px;">
-        <img src="public/images/ghibli-avatar.png" alt="Studio Ghibli Anime Tribute Art" width="170" height="170" style="border-radius: 50%; border: 3px solid #f8c8dc; box-shadow: 0 0 30px rgba(248, 200, 220, 0.5); object-fit: cover;" />
-        <br/>
-        <sub>🌸 <b>Ghibli Anime Edition</b></sub>
-      </td>
-      <td align="center" style="border: none; padding: 12px 18px;">
-        <img src="public/images/photo-1.jpg" alt="Memory Portrait Snapshot" width="170" height="170" style="border-radius: 50%; border: 3px solid #e6c896; box-shadow: 0 0 30px rgba(230, 200, 150, 0.45); object-fit: cover;" />
-        <br/>
-        <sub>✨ <b>Treasured Memory Snapshot</b></sub>
-      </td>
-    </tr>
-  </table>
+  <img src="public/images/ghibli-avatar.png" alt="Studio Ghibli Anime Tribute Art" width="180" height="180" style="border-radius: 50%; border: 3px solid #f8c8dc; box-shadow: 0 0 35px rgba(248, 200, 220, 0.55); object-fit: cover;" />
+  <br/>
+  <sub>🌸 <b>Studio Ghibli Chibi Tribute Art</b></sub>
 
   <br />
 
@@ -48,30 +37,14 @@
 
 ---
 
-## 📸 Visual Showcase & Memory Gallery
+## 🌸 Studio Ghibli Tribute Showcase
 
-Combining soft **Studio Ghibli-inspired art aesthetics** with personal memories, the experience offers a serene and privacy-first journey:
+The public repository preserves personal privacy by featuring an original, enchanting **Studio Ghibli / Chibi anime illustration** (`ghibli-avatar.png`):
 
 <div align="center">
-  <table border="0" style="border: none; background: transparent;">
-    <tr>
-      <td align="center" style="border: none; padding: 8px;">
-        <img src="public/images/ghibli-avatar.png" width="220" style="border-radius: 14px; border: 1px solid rgba(248, 200, 220, 0.35); box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
-        <br/>
-        <sub>🌸 <b>Studio Ghibli Illustration</b></sub>
-      </td>
-      <td align="center" style="border: none; padding: 8px;">
-        <img src="public/images/photo-2.jpg" width="220" style="border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
-        <br/>
-        <sub>🕊️ <b>Grace & Serenity</b></sub>
-      </td>
-      <td align="center" style="border: none; padding: 8px;">
-        <img src="public/images/photo-3.jpg" width="220" style="border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
-        <br/>
-        <sub>✨ <b>Timeless Moments</b></sub>
-      </td>
-    </tr>
-  </table>
+  <img src="public/images/ghibli-avatar.png" width="240" style="border-radius: 18px; border: 2px solid rgba(248, 200, 220, 0.45); box-shadow: 0 8px 30px rgba(0,0,0,0.6);" />
+  <br/>
+  <sub>🌸 <b>Enchanting Studio Ghibli & Chibi Aesthetic</b> • <i>Twilight sky, glowing crescent moon & sakura blossoms</i></sub>
 </div>
 
 ---
@@ -127,9 +100,9 @@ birthday-experience/
 │   ├── audio/                     # Curated audio soundtrack
 │   ├── covers/                    # Optimized music album artworks (WebP/JPG)
 │   ├── images/
-│   │   ├── ghibli-avatar.png      # Studio Ghibli aesthetic tribute art
-│   │   ├── photo-[1..4].jpg       # Personal memory snapshots
-│   │   └── photo-[1..4].webp      # Modern high-performance WebP formats
+│   │   ├── ghibli-avatar.png      # Studio Ghibli tribute artwork
+│   │   ├── photo-[1..4].jpg       # Memory photos (private / local)
+│   │   └── photo-[1..4].webp      # Optimized formats
 │   ├── og-image.jpg               # 1200x630 Social share banner
 │   ├── manifest.webmanifest       # PWA Web manifest
 │   ├── apple-touch-icon.png       # iOS Homescreen icon
