@@ -2,24 +2,25 @@
   "name": "Happy Birthday to You • A Special Journey",
   "short_name": "Happy Birthday to You",
   "description": "A personalized digital birthday gift experience crafted with gratitude and memories.",
-  "start_url": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#050507",
   "theme_color": "#050507",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
