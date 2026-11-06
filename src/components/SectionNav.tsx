@@ -27,6 +27,8 @@ export function SectionNav({ activeSection, totalSections = 9 }: SectionNavProps
       initial={{ opacity: 0 }}
       animate={{ opacity: hasScrolled || activeSection > 1 ? 1 : 0.4 }}
       transition={{ duration: 0.6 }}
+      aria-label="Progress navigation"
+      role="navigation"
       className="fixed top-6 right-6 md:top-8 md:right-10 z-40 flex items-center space-x-3 pointer-events-none select-none"
     >
       <div className="flex flex-col items-center space-y-1">

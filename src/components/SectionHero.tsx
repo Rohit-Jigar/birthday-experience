@@ -63,6 +63,10 @@ export function SectionHero() {
               <img
                 src={mainPhoto}
                 alt={recipientName}
+                width={256}
+                height={256}
+                loading="eager"
+                fetchPriority="high"
                 onError={() => setImgError(true)}
                 className="w-full h-full object-cover rounded-full filter contrast-[1.03] brightness-95 hover:scale-105 transition-transform duration-700"
               />

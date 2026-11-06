@@ -41,6 +41,7 @@ export function FloatingAudioWidget() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={`Open audio player - ${currentTrack.title}`}
           className="relative flex items-center space-x-2.5 px-4 py-2.5 rounded-full glass-panel-pink hover:border-rosePink-300/60 transition-all duration-300 shadow-glow-pink text-textPrimary group cursor-pointer"
         >
           <div className="relative flex items-center justify-center w-6 h-6">
@@ -58,11 +59,13 @@ export function FloatingAudioWidget() {
             {currentTrack.title}
           </span>
           <div
+            role="button"
+            aria-label={isPlaying ? "Pause music" : "Play music"}
             onClick={(e) => {
               e.stopPropagation();
               togglePlay();
             }}
-            className="p-1.5 rounded-full bg-rosePink-300/20 hover:bg-rosePink-300/35 text-rosePink-300 transition-colors ml-1"
+            className="p-1.5 rounded-full bg-rosePink-300/20 hover:bg-rosePink-300/35 text-rosePink-300 transition-colors ml-1 cursor-pointer"
           >
             {isPlaying ? (
               <Pause className="w-3.5 h-3.5 fill-rosePink-300" />
@@ -85,13 +88,14 @@ export function FloatingAudioWidget() {
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
               <div className="flex items-center space-x-2">
                 <ListMusic className="w-4 h-4 text-rosePink-300" />
-                <h4 className="text-xs tracking-wider uppercase font-semibold text-rosePink-300">
+                <h3 className="text-xs tracking-wider uppercase font-semibold text-rosePink-300">
                   Audio Experience
-                </h4>
+                </h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-textSecondary hover:text-textPrimary transition-colors rounded-full hover:bg-white/5"
+                aria-label="Close audio panel"
+                className="p-1 text-textSecondary hover:text-textPrimary transition-colors rounded-full hover:bg-white/5 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -118,13 +122,15 @@ export function FloatingAudioWidget() {
             <div className="flex items-center justify-center space-x-4 mb-4">
               <button
                 onClick={prevTrack}
-                className="p-2 text-textSecondary hover:text-rosePink-300 transition-colors"
+                aria-label="Previous track"
+                className="p-2 text-textSecondary hover:text-rosePink-300 transition-colors cursor-pointer"
               >
                 <SkipBack className="w-4 h-4" />
               </button>
               <button
                 onClick={togglePlay}
-                className="p-3 bg-rosePink-300 text-background rounded-full hover:bg-rosePink-200 transition-transform active:scale-95 shadow-glow-pink"
+                aria-label={isPlaying ? "Pause music" : "Play music"}
+                className="p-3 bg-rosePink-300 text-background rounded-full hover:bg-rosePink-200 transition-transform active:scale-95 shadow-glow-pink cursor-pointer"
               >
                 {isPlaying ? (
                   <Pause className="w-5 h-5 fill-background" />
@@ -134,20 +140,28 @@ export function FloatingAudioWidget() {
               </button>
               <button
                 onClick={nextTrack}
-                className="p-2 text-textSecondary hover:text-rosePink-300 transition-colors"
+                aria-label="Next track"
+                className="p-2 text-textSecondary hover:text-rosePink-300 transition-colors cursor-pointer"
               >
                 <SkipForward className="w-4 h-4" />
               </button>
             </div>
 
             <div className="flex items-center space-x-2 px-1 mb-4 text-textSecondary text-xs">
-              {volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+              <button
+                onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
+                aria-label={volume === 0 ? "Unmute audio" : "Mute audio"}
+                className="text-textSecondary hover:text-rosePink-300 transition-colors cursor-pointer"
+              >
+                {volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+              </button>
               <input
                 type="range"
                 min="0"
                 max="1"
                 step="0.05"
                 value={volume}
+                aria-label="Volume slider"
                 onChange={(e) => setVolume(parseFloat(e.target.value))}
                 className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-rosePink-300"
               />

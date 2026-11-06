@@ -113,9 +113,9 @@ function GoldenScratchCard() {
       {/* Hidden Secret Message underneath */}
       <div className="absolute inset-0 bg-surface/90 backdrop-blur-md p-6 flex flex-col items-center justify-center text-center space-y-1.5">
         <Heart className="w-5 h-5 text-rosePink-300 fill-rosePink-300/40 animate-pulse" />
-        <h4 className="text-xs uppercase tracking-widest font-cinzel text-rosePink-300 font-semibold">
+        <h3 className="text-xs uppercase tracking-widest font-cinzel text-rosePink-300 font-semibold">
           Secret Birthday Blessing
-        </h4>
+        </h3>
         <p className="text-xs sm:text-sm font-serif italic text-textPrimary leading-relaxed">
           &ldquo;No matter how many seasons pass, your kindness, warmth, and grace will always be remembered with respect.&rdquo;
         </p>

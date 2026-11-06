@@ -88,9 +88,9 @@ export function OpenWhenVault() {
               {letter.badge}
             </span>
 
-            <h4 className="text-xs sm:text-sm font-serif text-textPrimary group-hover:text-rosePink-100 font-medium leading-snug">
+            <h3 className="text-xs sm:text-sm font-serif text-textPrimary group-hover:text-rosePink-100 font-medium leading-snug">
               {letter.title}
-            </h4>
+            </h3>
 
             <div className="mt-3 inline-flex items-center space-x-1.5 text-[10px] uppercase tracking-wider text-rosePink-300 font-semibold pt-2 border-t border-rosePink-300/15 w-full justify-center">
               <span>Unseal</span>

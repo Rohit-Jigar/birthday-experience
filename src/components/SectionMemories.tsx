@@ -66,6 +66,8 @@ function MemoryCard({ item, index }: MemoryCardProps) {
                 <img
                   src={item.image}
                   alt={item.title}
+                  width={400}
+                  height={300}
                   loading="lazy"
                   decoding="async"
                   onError={() => setImgError(true)}

@@ -13,15 +13,14 @@ interface SectionIntroProps {
 export function SectionIntro({ onContinue }: SectionIntroProps) {
   const { openingText } = birthdayConfig;
   const { play } = useAudio();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setStep(1), 700);
-    const t2 = setTimeout(() => setStep(2), 2200);
-    const t3 = setTimeout(() => setStep(3), 3800);
-    const t4 = setTimeout(() => setStep(4), 5200);
+    // Fast, gentle sequence: line 1 immediate, line 2 at 450ms, line 3 at 950ms, button at 1450ms
+    const t2 = setTimeout(() => setStep(2), 450);
+    const t3 = setTimeout(() => setStep(3), 950);
+    const t4 = setTimeout(() => setStep(4), 1450);
     return () => {
-      clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
       clearTimeout(t4);
@@ -84,11 +83,11 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
         )}
       </div>
 
-      {step >= 4 && (
+      {step >= 4 ? (
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mt-12"
         >
           <button
@@ -96,10 +95,26 @@ export function SectionIntro({ onContinue }: SectionIntroProps) {
               play();
               onContinue();
             }}
-            className="group relative flex items-center space-x-2.5 px-8 py-3.5 rounded-full bg-surface/80 hover:bg-surface-hover border border-rosePink-300/40 text-rosePink-300 text-xs tracking-widest uppercase transition-all duration-500 shadow-glow-pink hover:shadow-glow active:scale-95"
+            className="group relative flex items-center space-x-2.5 px-8 py-3.5 rounded-full bg-surface/80 hover:bg-surface-hover border border-rosePink-300/40 text-rosePink-300 text-xs tracking-widest uppercase transition-all duration-500 shadow-glow-pink hover:shadow-glow active:scale-95 cursor-pointer"
           >
             <span>{openingText.buttonText}</span>
             <ChevronDown className="w-4 h-4 text-rosePink-300 group-hover:translate-y-1 transition-transform" />
+          </button>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          className="mt-12"
+        >
+          <button
+            onClick={() => {
+              play();
+              onContinue();
+            }}
+            className="text-[11px] uppercase tracking-widest text-textSecondary/70 hover:text-rosePink-300 transition-colors cursor-pointer"
+          >
+            Skip directly ↓
           </button>
         </motion.div>
       )}

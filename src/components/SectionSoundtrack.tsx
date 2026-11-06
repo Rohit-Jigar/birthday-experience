@@ -130,6 +130,7 @@ export function SectionSoundtrack() {
             max={duration || 100}
             value={currentTime}
             onChange={(e) => seek(parseFloat(e.target.value))}
+            aria-label="Seek track position"
             className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-rosePink-300"
           />
           <div className="flex justify-between text-[10px] text-textSecondary font-mono">
@@ -142,20 +143,23 @@ export function SectionSoundtrack() {
         <div className="flex items-center justify-between px-4">
           <button
             onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-            className="p-2 text-textSecondary hover:text-rosePink-300 transition-colors"
+            aria-label={volume === 0 ? "Unmute audio" : "Mute audio"}
+            className="p-2 text-textSecondary hover:text-rosePink-300 transition-colors cursor-pointer"
           >
             {volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
           <div className="flex items-center space-x-5">
             <button
               onClick={prevTrack}
-              className="p-2.5 text-textSecondary hover:text-textPrimary transition-colors"
+              aria-label="Previous track"
+              className="p-2.5 text-textSecondary hover:text-textPrimary transition-colors cursor-pointer"
             >
               <SkipBack className="w-5 h-5" />
             </button>
             <button
               onClick={togglePlay}
-              className="p-4 bg-rosePink-300 text-background rounded-full hover:bg-rosePink-200 transition-transform active:scale-95 shadow-glow-pink"
+              aria-label={isPlaying ? "Pause music" : "Play music"}
+              className="p-4 bg-rosePink-300 text-background rounded-full hover:bg-rosePink-200 transition-transform active:scale-95 shadow-glow-pink cursor-pointer"
             >
               {isPlaying ? (
                 <Pause className="w-6 h-6 fill-background" />
@@ -165,7 +169,8 @@ export function SectionSoundtrack() {
             </button>
             <button
               onClick={nextTrack}
-              className="p-2.5 text-textSecondary hover:text-textPrimary transition-colors"
+              aria-label="Next track"
+              className="p-2.5 text-textSecondary hover:text-textPrimary transition-colors cursor-pointer"
             >
               <SkipForward className="w-5 h-5" />
             </button>

@@ -37,7 +37,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const audio = new Audio();
-    audio.preload = "metadata";
+    audio.preload = "none";
     audio.volume = volume;
     audioRef.current = audio;
 
@@ -66,14 +66,16 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, [playlist.length]);
 
   useEffect(() => {
-    if (audioRef.current && playlist[currentTrackIndex]) {
+    // Only load audio if user has interacted or is already playing
+    if (audioRef.current && playlist[currentTrackIndex] && (isPlaying || hasInteracted)) {
       audioRef.current.src = playlist[currentTrackIndex].src;
+      audioRef.current.preload = "auto";
       audioRef.current.load();
       if (isPlaying) {
         audioRef.current.play().catch(() => setIsPlaying(false));
       }
     }
-  }, [currentTrackIndex]);
+  }, [currentTrackIndex, isPlaying, hasInteracted, playlist]);
 
   const currentTrack = playlist[currentTrackIndex] || playlist[0];
 

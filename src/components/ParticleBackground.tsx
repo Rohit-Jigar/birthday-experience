@@ -203,13 +203,13 @@ export function ParticleBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden transform-gpu">
-      {/* Subtle background ambient nebulas */}
-      <div className="absolute -top-32 -left-32 w-[420px] h-[420px] bg-rosePink-300/15 rounded-full blur-[130px] pointer-events-none animate-pulse-glow will-change-transform" />
+      {/* Optimized background ambient nebulas */}
+      <div className="absolute -top-32 -left-32 w-[380px] h-[380px] bg-rosePink-300/12 rounded-full blur-[80px] pointer-events-none animate-pulse-glow will-change-transform translate-z-0" />
       <div
-        className="absolute top-1/3 -right-40 w-[520px] h-[520px] bg-rosePink-200/10 rounded-full blur-[160px] pointer-events-none animate-pulse-glow will-change-transform"
+        className="absolute top-1/3 -right-40 w-[440px] h-[440px] bg-rosePink-200/10 rounded-full blur-[90px] pointer-events-none animate-pulse-glow will-change-transform translate-z-0"
         style={{ animationDelay: "2s" }}
       />
-      <div className="absolute -bottom-32 left-1/4 w-[450px] h-[450px] bg-champagne-300/10 rounded-full blur-[140px] pointer-events-none will-change-transform" />
+      <div className="absolute -bottom-32 left-1/4 w-[380px] h-[380px] bg-champagne-300/10 rounded-full blur-[80px] pointer-events-none will-change-transform translate-z-0" />
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full transform-gpu" />
     </div>
   );
