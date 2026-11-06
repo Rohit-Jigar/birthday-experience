@@ -66,50 +66,48 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, [playlist.length]);
 
   useEffect(() => {
-    // Only load audio if user has interacted or is already playing
-    if (audioRef.current && playlist[currentTrackIndex] && (isPlaying || hasInteracted)) {
-      audioRef.current.src = playlist[currentTrackIndex].src;
+    if (!audioRef.current || !playlist[currentTrackIndex]) return;
+
+    const targetSrc = playlist[currentTrackIndex].src;
+    // Only load if the audio source has actually changed to a new track
+    if (audioRef.current.src && !audioRef.current.src.endsWith(targetSrc)) {
+      audioRef.current.src = targetSrc;
       audioRef.current.preload = "auto";
       audioRef.current.load();
       if (isPlaying) {
         audioRef.current.play().catch(() => setIsPlaying(false));
       }
     }
-  }, [currentTrackIndex, isPlaying, hasInteracted, playlist]);
+  }, [currentTrackIndex, isPlaying, playlist]);
 
   const currentTrack = playlist[currentTrackIndex] || playlist[0];
 
   const togglePlay = () => {
     if (!audioRef.current) return;
-    if (!hasInteracted) setHasInteracted(true);
-
     if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
+      pause();
     } else {
-      if (!audioRef.current.src) {
-        audioRef.current.src = playlist[currentTrackIndex].src;
-      }
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch((err) => {
-          console.warn("Audio playback delayed until user gesture", err);
-          setIsPlaying(false);
-        });
+      play();
     }
   };
 
   const play = () => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || !playlist[currentTrackIndex]) return;
     if (!hasInteracted) setHasInteracted(true);
-    if (!audioRef.current.src) {
-      audioRef.current.src = playlist[currentTrackIndex].src;
+
+    const targetSrc = playlist[currentTrackIndex].src;
+    if (!audioRef.current.src || !audioRef.current.src.endsWith(targetSrc)) {
+      audioRef.current.src = targetSrc;
+      audioRef.current.preload = "auto";
     }
+
     audioRef.current
       .play()
       .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false));
+      .catch((err) => {
+        console.warn("Audio playback delayed until user gesture", err);
+        setIsPlaying(false);
+      });
   };
 
   const pause = () => {
@@ -119,17 +117,28 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   };
 
   const nextTrack = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % playlist.length);
+    const next = (currentTrackIndex + 1) % playlist.length;
+    selectTrack(next);
   };
 
   const prevTrack = () => {
-    setCurrentTrackIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
+    const prev = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+    selectTrack(prev);
   };
 
   const selectTrack = (index: number) => {
     if (index >= 0 && index < playlist.length) {
       setCurrentTrackIndex(index);
-      if (!isPlaying) setIsPlaying(true);
+      if (!hasInteracted) setHasInteracted(true);
+      if (audioRef.current) {
+        audioRef.current.src = playlist[index].src;
+        audioRef.current.preload = "auto";
+        audioRef.current.load();
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false));
+      }
     }
   };
 

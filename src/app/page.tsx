@@ -19,7 +19,8 @@ import { useAudio } from "@/context/audio-context";
 export default function BirthdayPage() {
   const [activeSection, setActiveSection] = useState(1);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
-  const { pause } = useAudio();
+  const { play, pause } = useAudio();
+  const prevSectionRef = useRef<number>(1);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,15 +31,23 @@ export default function BirthdayPage() {
             if (index !== -1) {
               const currentSection = index + 1;
               setActiveSection(currentSection);
-              if (currentSection === 9) {
-                // When she reaches the final celebration section, automatically stop music
-                pause();
+
+              // Automatic Music Lifecycle:
+              // Chapters 2 to 8 (Hero, Cake, Letter, Memories, Soundtrack, Wishes, Stars) -> Auto-start / resume music
+              // Chapter 1 (Intro) and Chapters 9 & 10 (Finale & Farewell) -> Auto-stop music
+              if (currentSection !== prevSectionRef.current) {
+                if (currentSection >= 2 && currentSection <= 8) {
+                  play();
+                } else if (currentSection === 1 || currentSection === 9 || currentSection === 10) {
+                  pause();
+                }
+                prevSectionRef.current = currentSection;
               }
             }
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.35 }
     );
 
     sectionRefs.current.forEach((el) => {
@@ -46,7 +55,27 @@ export default function BirthdayPage() {
     });
 
     return () => observer.disconnect();
-  }, [pause]);
+  }, [play, pause]);
+
+  // Mobile / browser gesture listener:
+  // If user scrolls or taps into chapters 2-8, ensure audio begins playing seamlessly
+  useEffect(() => {
+    const handleFirstGesture = () => {
+      if (prevSectionRef.current >= 2 && prevSectionRef.current <= 8) {
+        play();
+      }
+    };
+
+    window.addEventListener("pointerdown", handleFirstGesture, { once: true, passive: true });
+    window.addEventListener("touchstart", handleFirstGesture, { once: true, passive: true });
+    window.addEventListener("scroll", handleFirstGesture, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", handleFirstGesture);
+      window.removeEventListener("touchstart", handleFirstGesture);
+      window.removeEventListener("scroll", handleFirstGesture);
+    };
+  }, [play]);
 
   const scrollToSection = (sectionIndex: number) => {
     const target = sectionRefs.current[sectionIndex - 1];
@@ -152,6 +181,8 @@ export default function BirthdayPage() {
           onReplay={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
             setActiveSection(1);
+            prevSectionRef.current = 1;
+            pause();
           }}
           onContinueToFarewell={() => scrollToSection(10)}
         />
@@ -168,6 +199,8 @@ export default function BirthdayPage() {
           onReplay={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
             setActiveSection(1);
+            prevSectionRef.current = 1;
+            pause();
           }}
         />
       </section>
